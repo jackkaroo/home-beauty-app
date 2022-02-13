@@ -1,0 +1,33 @@
+.hero {
+  width: 100%;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+  opacity: 1;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(47, 47, 47, 0.4);
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 54px;
+  color: #FDFDFD;
+  text-align: center;
+}
+
+.text_wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
