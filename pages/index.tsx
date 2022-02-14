@@ -7,6 +7,7 @@ import MainHero from '../components/MainHero/MainHero';
 
 import styles from '../styles/Home.module.css';
 import PopularCategories from '../components/PopularCategories/PopularCategories';
+import PromoteBlock from '../components/PromoteBlock/PromoteBlock';
 
 const Home = () => {
   return (
@@ -22,6 +23,8 @@ const Home = () => {
         <div className={styles.container}>
           <PopularOffers title="Popular offers "/>
           <PopularCategories />
+          <PromoteBlock />
+          <PromoteBlock isReverse />
         </div>
       </main>
     </div>

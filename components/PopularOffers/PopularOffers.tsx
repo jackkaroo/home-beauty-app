@@ -11,7 +11,7 @@ interface Props {
 
 const PopularOffers: React.FC<Props> = ({title}: Props) => {
   const settings = {
-    infinite: false,
+    infinite: true,
     speed: 500,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -20,12 +20,12 @@ const PopularOffers: React.FC<Props> = ({title}: Props) => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       <Slider {...settings}>
         {data.map((item) => <Offer master={item} key={item.id} />)}
       </Slider>
-    </div>
+    </section>
   );
 };
 
