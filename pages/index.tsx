@@ -1,15 +1,13 @@
 import React from 'react';
-
 import Head from 'next/head';
 
-import PopularOffers from '../components/PopularOffers/PopularOffers';
-import MainHero from '../components/MainHero/MainHero';
+import PopularOffers from 'components/PopularOffers/PopularOffers';
+import MainHero from 'components/MainHero/MainHero';
+import PopularCategories from 'components/PopularCategories/PopularCategories';
+import PromoteBlock from 'components/PromoteBlock/PromoteBlock';
+import Footer from 'components/Footer/Footer';
 
-import styles from '../styles/Home.module.css';
-import PopularCategories from '../components/PopularCategories/PopularCategories';
-import PromoteBlock from '../components/PromoteBlock/PromoteBlock';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
+import styles from 'styles/Home.module.css';
 
 const Home = () => {
   return (
@@ -23,7 +21,7 @@ const Home = () => {
       <main className={styles.main}>
         <MainHero />
         <div className="container">
-          <PopularOffers title="Popular offers "/>
+          <PopularOffers title="Popular offers " />
           <PopularCategories />
           <PromoteBlock />
           <PromoteBlock isReverse />

@@ -1,16 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Arrow from '../../../assets/arrow.png';
+import Arrow from 'assets/arrow.png';
+import { Category } from '_types';
 import styles from '../categories.module.scss';
-import {Category} from '../../../_types';
-
 
 interface Props {
   category: Category;
 }
 
-const Category: React.FC<Props> = ({category}: Props) => {
+const Category: React.FC<Props> = ({ category }: Props) => {
   return (
     <a className={styles.category_wrapper} href={`/categories/${category.id}`}>
       <div className={styles.name}>{category.name}</div>

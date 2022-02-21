@@ -8,7 +8,8 @@
 
 .title {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
+  text-transform: uppercase;
 }
 
 .hr {
@@ -30,7 +31,7 @@
 .subtitle {
   font-weight: 500;
   font-size: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .working {
@@ -38,4 +39,11 @@
   justify-content: space-between;
   font-size: 18px;
   margin-bottom: 5px;
+  color: #626161;
+  font-size: 16px;
+}
+
+.text {
+  color: #626161;
+  font-size: 16px;
 }

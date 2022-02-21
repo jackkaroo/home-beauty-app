@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     id: 0,
     firstName: 'Maria',
@@ -7,7 +7,7 @@ export const data = [
     rate: '5.0',
     reviews: 171,
     price: '$$',
-    category: "nails",
+    category: 'nails',
     services: [
       {
         service: 'manicure',
@@ -23,8 +23,8 @@ export const data = [
         service: 'manicure',
         duration: '1,5 hour',
         price: '120',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 1,
@@ -34,7 +34,7 @@ export const data = [
     rate: '5.0',
     reviews: 171,
     price: '$$',
-    category: "nails",
+    category: 'nails',
     services: [
       {
         service: 'manicure',
@@ -50,8 +50,8 @@ export const data = [
         service: 'manicure',
         duration: '1,5 hour',
         price: '120',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 2,
@@ -61,7 +61,7 @@ export const data = [
     rate: '5.0',
     reviews: 171,
     price: '$$',
-    category: "nails",
+    category: 'nails',
     services: [
       {
         service: 'manicure',
@@ -77,8 +77,8 @@ export const data = [
         service: 'manicure',
         duration: '1,5 hour',
         price: '120',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 3,
@@ -88,7 +88,7 @@ export const data = [
     rate: '5.0',
     reviews: 171,
     price: '$$',
-    category: "nails",
+    category: 'nails',
     services: [
       {
         service: 'manicure',
@@ -104,7 +104,9 @@ export const data = [
         service: 'manicure',
         duration: '1,5 hour',
         price: '120',
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
+
+export default data;

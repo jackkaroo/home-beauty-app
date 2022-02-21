@@ -1,13 +1,16 @@
 import React from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
-import PopularOffers from '../../components/PopularOffers/PopularOffers';
+import PopularOffers from 'components/PopularOffers/PopularOffers';
+import data from 'data/popular_offers';
+import MasterShortInfo from 'components/MasterShortInfo/MasterShortInfo';
+import Footer from 'components/Footer/Footer';
+import Header from 'components/Header/Header';
 import styles from './category.module.scss';
-import {data} from '../../data/popular_offers';
-import MasterShortInfo from '../../components/MasterShortInfo/MasterShortInfo';
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
 
+const capitalizeFirstLetter = (string) => {
+  return string?.charAt(0).toUpperCase() + string?.slice(1);
+};
 
 const Category = () => {
   const router = useRouter();
@@ -36,18 +39,14 @@ const Category = () => {
 
 export default Category;
 
-function capitalizeFirstLetter(string) {
-  return string?.charAt(0).toUpperCase() + string?.slice(1);
-}
-
 const getStaticProps = async () => {
   // get masters by categories
-  const res = await fetch('https://.../posts')
-  const data = await res.json()
+  const res = await fetch('https://.../posts');
+  const dataK = await res.json();
 
   return {
     props: {
-      data,
+      dataK,
     },
-  }
-}
+  };
+};
