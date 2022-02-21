@@ -8,6 +8,23 @@ export const data = [
     reviews: 171,
     price: '$$',
     category: "nails",
+    services: [
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      }
+    ]
   },
   {
     id: 1,
@@ -18,6 +35,23 @@ export const data = [
     reviews: 171,
     price: '$$',
     category: "nails",
+    services: [
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      }
+    ]
   },
   {
     id: 2,
@@ -28,6 +62,23 @@ export const data = [
     reviews: 171,
     price: '$$',
     category: "nails",
+    services: [
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      }
+    ]
   },
   {
     id: 3,
@@ -38,5 +89,22 @@ export const data = [
     reviews: 171,
     price: '$$',
     category: "nails",
+    services: [
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      },
+      {
+        service: 'manicure',
+        duration: '1,5 hour',
+        price: '120',
+      }
+    ]
   }
 ];

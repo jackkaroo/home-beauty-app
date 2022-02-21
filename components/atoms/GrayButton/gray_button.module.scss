@@ -1,0 +1,17 @@
+.button {
+  background: #C4C4C4;
+  border-radius: 5px;
+  padding: 0 32px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-left: 20px;
+
+  &:hover {
+    background: rgba(196, 196, 196, 0.08);
+    border: 1px solid #C4C4C4;
+  }
+}

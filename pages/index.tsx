@@ -8,6 +8,8 @@ import MainHero from '../components/MainHero/MainHero';
 import styles from '../styles/Home.module.css';
 import PopularCategories from '../components/PopularCategories/PopularCategories';
 import PromoteBlock from '../components/PromoteBlock/PromoteBlock';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 const Home = () => {
   return (
@@ -20,13 +22,15 @@ const Home = () => {
 
       <main className={styles.main}>
         <MainHero />
-        <div className={styles.container}>
+        <div className="container">
           <PopularOffers title="Popular offers "/>
           <PopularCategories />
           <PromoteBlock />
           <PromoteBlock isReverse />
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };

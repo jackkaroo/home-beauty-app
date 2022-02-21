@@ -7,9 +7,19 @@ export interface Master {
   reviews: number,
   price: string,
   category: string,
+  services: any,
+  phone?: string,
+  nickname?: string,
 }
 
 export interface Category {
+  id: string,
   name: string,
   desc: string,
+}
+
+export interface Service {
+  service: string,
+  price: string,
+  duration: string,
 }

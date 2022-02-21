@@ -9,7 +9,7 @@ interface Props {
 
 const Offer: React.FC<Props> = ({master}: Props) => {
   return (
-    <div className={styles.offer_wrapper}>
+    <a className={styles.offer_wrapper} href={`/masters/${master.id}`}>
       <div className={styles.image}/>
       <div className={styles.first_line}>
         <div>
@@ -23,7 +23,7 @@ const Offer: React.FC<Props> = ({master}: Props) => {
         <div className={styles.category}>{master.category}</div>
       </div>
       <div className={styles.address}>{master.address}</div>
-    </div>
+    </a>
   );
 };
 
