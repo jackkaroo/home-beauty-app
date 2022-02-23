@@ -1,0 +1,36 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email String   @unique
+  phone String?
+  name  String
+  surname  String?
+  hash  String
+  role  UserRole
+
+  avatarId Int?
+  avatar   Image? @relation(fields: [avatarId], references: [id], onDelete: SetNull)
+}
+
+enum UserRole {
+  USER
+  MASTER
+}
+
+model Image {
+  id Int @id @default(autoincrement())
+
+  path String
+
+  User    User[]
+}

@@ -12,6 +12,14 @@ export interface Master {
   nickname?: string,
 }
 
+export interface USER {
+  id: string,
+  name: string,
+  surname: string,
+  phone: string,
+  email: string,
+}
+
 export interface Category {
   id: string,
   name: string,
