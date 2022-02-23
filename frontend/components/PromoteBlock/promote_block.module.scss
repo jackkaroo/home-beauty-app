@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 100px 0px 0;
 }
 
@@ -12,9 +12,13 @@
 }
 
 .image {
-  background: #C4C4C4;
-  width: 600px;
-  height: 355px;
+  max-width: 650px;
+  margin-right: 70px;
+}
+
+.image_right {
+  max-width: 650px;
+  margin-left: 70px;
 }
 
 .text_wrapper {
