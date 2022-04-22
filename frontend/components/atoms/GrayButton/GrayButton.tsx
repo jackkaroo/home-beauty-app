@@ -6,7 +6,7 @@ interface Props {
   text: string;
 }
 
-const GrayButton: React.FC<Props> = ({text}: Props) => {
+const GrayButton: React.FC<Props> = ({ text }: Props) => {
   return (
     <a className={styles.button} href="/">
       {text}

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
 
 import PopularOffers from 'components/PopularOffers/PopularOffers';
-import MainHero from 'components/MainHero/MainHero';
-import PopularCategories from 'components/PopularCategories/PopularCategories';
-import PromoteBlock from 'components/PromoteBlock/PromoteBlock';
+import MainHero from 'components/HomePage/MainHero/MainHero';
+import PopularCategories from 'components/HomePage/PopularCategories/PopularCategories';
+import PromoteBlock from 'components/HomePage/PromoteBlock/PromoteBlock';
 import Footer from 'components/Footer/Footer';
 
 import styles from 'styles/Home.module.css';
 
-const Home = () => {
+const Home: FC = () => {
   return (
     <div>
       <Head>

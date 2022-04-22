@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 
 import ImageBg from 'assets/hero_bg.jpeg';
-import styles from 'components/MainHero/hero.module.scss';
+import styles from 'components/HomePage/MainHero/hero.module.scss';
 
-const MainHero = () => {
+const MainHero: FC = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.image}>
-        <Image src={ImageBg} alt="bg"/>
+        <Image src={ImageBg} alt="bg" />
       </div>
       <div className={styles.text_wrapper}>
         <h1 className={styles.title}>Find your beauty service</h1>

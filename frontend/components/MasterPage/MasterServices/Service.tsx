@@ -1,12 +1,12 @@
 import React from 'react';
-import {Service} from '_types';
-import styles from 'components/MasterServices/master_services.module.scss';
+import { Service } from '_types';
+import styles from './master_services.module.scss';
 
 interface Props {
   service: Service;
 }
 
-const MasterService: React.FC<Props> = ({service}: Props) => {
+const MasterService: React.FC<Props> = ({ service }: Props) => {
   return (
     <div className={styles.service_wrapper}>
       <div className={styles.service}>{service.service}</div>
@@ -19,7 +19,7 @@ const MasterService: React.FC<Props> = ({service}: Props) => {
           </div>
           <div className={styles.duration}>{service.duration}</div>
         </div>
-        <input type="checkbox" className={styles.checkbox}/>
+        <input type="checkbox" className={styles.checkbox} />
       </div>
     </div>
   );

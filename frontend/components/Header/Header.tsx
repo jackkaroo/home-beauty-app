@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-
-import Logo from 'assets/logo.svg';
+import React, { FC, useEffect, useState } from 'react';
 import styles from 'components/Header/header.module.scss';
 import { getLocalToken, removeLocalToken } from 'services/api/base';
+import { useRouter } from 'next/router';
 
-const Header = () => {
+const Header: FC = () => {
   const [isAuth, setAuth] = useState(false);
 
-  const checkToken = () => {
+  const router = useRouter();
+  const isHomePage = router.route === '/';
+
+  const checkToken = (): void => {
     if (getLocalToken('home_token')) {
       setAuth(true);
     }
@@ -23,7 +24,7 @@ const Header = () => {
     };
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     removeLocalToken('home_token');
     window.location.reload();
   };
@@ -31,19 +32,18 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <a className={styles.logo} href="/">
-        <Image src={Logo} alt="logo" />
+        {/* <Image src={Logo} alt="logo"/> */}
       </a>
       {
         isAuth ? (
           <div>
             <a>My cab</a>
-            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
             <a onClick={handleLogout}>Logout</a>
           </div>
         ) : (
           <div>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
+            <a href="/login" className={isHomePage && styles.white}>Sign in</a>
+            <a href="/register" className={isHomePage && styles.white}>Sign up</a>
           </div>
         )
       }

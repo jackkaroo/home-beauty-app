@@ -39,19 +39,20 @@
 }
 
 .button {
-  background: #C4C4C4;
   border-radius: 5px;
-  height: 48px;
-  width: 200px;
-  color: white;
+  height: 50px;
+  width: 230px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
+  background: darkseagreen;
+  color: white;
+  box-shadow: 0 6px 12px rgba(201, 201, 201, 0.8);
+
   &:hover {
-    background: rgba(196, 196, 196, 0.08);
-    border: 1px solid #C4C4C4;
-    color: black;
+    background: #7ea67e;
+    color: white;
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import {Service} from '_types';
-import styles from 'components/MasterShortInfo/master.module.scss';
+import { Service } from '_types';
+import styles from './master.module.scss';
 
 interface Props {
   service: Service;
 }
 
-const MasterService: React.FC<Props> = ({service}: Props) => {
+const MasterService: React.FC<Props> = ({ service }: Props) => {
   return (
     <div className={styles.service_wrapper}>
       <div className={styles.service}>{service.service}</div>

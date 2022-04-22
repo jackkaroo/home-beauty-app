@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 // eslint-disable-next-line camelcase
-import jwt_decode from 'jwt-decode';
-
 import { authorizeUser } from 'services/api/users';
 import { useRouter } from 'next/router';
-import { USER } from '_types';
-import { setLocalToken } from 'services/api/base';
 
 import styles from 'styles/Auth.module.scss';
+import { setLocalToken } from 'services/api/base';
+import Image from 'next/image';
+import FaceImg from 'assets/register_image.jpeg';
+import LoginForm from 'components/Auth/LoginForm';
 
-const Login = () => {
+const Login: FC = () => {
   const router = useRouter();
 
   const [values, setValues] = useState({
@@ -17,22 +17,31 @@ const Login = () => {
     password: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e): Promise<void> => {
     e.preventDefault();
 
-    authorizeUser({ email: values.email, password: values.password })
-      .then((data) => {
-        const user: USER = jwt_decode(data.token);
+    try {
+      const data = await authorizeUser(values);
+      // const user: USER = jwt_decode(data.token);
+      setLocalToken('home_token', data.token);
+      await router.push('/');
+    } catch (err) {
+      console.log('Incorrect login or password. Try again.');
+    }
 
-        setLocalToken('home_token', data.token);
-
-        router.push('/');
-        return user;
-      })
-      .catch(() => alert('Incorrect login or password. Try again.'));
+    // authorizeUser(values)
+    //   .then((data) => {
+    //     const user: USER = jwt_decode(data?.token);
+    //
+    //     setLocalToken('home_token', data.token);
+    //
+    //     router.push('/');
+    //     return user;
+    //   })
+    //   .catch(() => alert('Incorrect login or password. Try again.'));
   };
 
-  const updateField = (e) => {
+  const updateField = (e): void => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -41,28 +50,11 @@ const Login = () => {
 
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            value={values.email}
-            name="email"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            value={values.password}
-            name="password"
-            type="password"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <button>Submit</button>
-      </form>
+      <h1 className={styles.title}>Sign in</h1>
+      <div className={styles.content_wrapper}>
+        <Image src={FaceImg} alt="" />
+        <LoginForm handleSubmit={handleSubmit} updateField={updateField} values={values} />
+      </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from 'components/Footer/footer.module.scss';
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
-    <footer className={styles.footer}/>
+    <footer className={styles.footer} />
   );
 };
 

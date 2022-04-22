@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Header from 'components/Header/Header';
 import RateSquare from 'components/atoms/RateSquare/RateSquare';
 
 import Footer from 'components/Footer/Footer';
 import GrayButton from 'components/atoms/GrayButton/GrayButton';
-import MasterInfoBlock from 'components/MasterInfoBlock/MasterInfoBlock';
-import MasterWorks from 'components/MasterWorks/MasterWorks';
-import MasterServices from 'components/MasterServices/MasterServices';
 import styles from 'pages/masters/master.module.scss';
+import MasterWorks from 'components/MasterPage/MasterWorks/MasterWorks';
+import MasterServices from 'components/MasterPage/MasterServices/MasterServices';
+import MasterInfoBlock from 'components/MasterPage/MasterInfoBlock/MasterInfoBlock';
 
 const master = {
   id: 2,
@@ -41,15 +41,15 @@ const master = {
 };
 
 // get master from static props
-const Master = () => {
+const Master: FC = () => {
   return (
     <div>
-      <Header/>
+      <Header />
       <div className={styles.container}>
         <div className={styles.title_row}>
-          <div className={styles.background} style={{background: master.background}}/>
+          <div className={styles.background} style={{ background: master.background }} />
           <div className={styles.flex}>
-            <div className={styles.master_avatar}/>
+            <div className={styles.master_avatar} />
             <div>
               <span className={styles.title}>
                 {master.firstName}
@@ -63,20 +63,20 @@ const Master = () => {
             </div>
           </div>
           <div className={styles.flex}>
-            <RateSquare rate={master.rate} reviews={master.reviews}/>
-            <GrayButton text="Call"/>
-            <GrayButton text="Write a message"/>
+            <RateSquare rate={master.rate} reviews={master.reviews} />
+            <GrayButton text="Call" />
+            <GrayButton text="Write a message" />
           </div>
         </div>
         <div className={styles.inner_wrapper}>
           <div>
-            <MasterWorks master={master}/>
-            <MasterServices master={master}/>
+            <MasterWorks master={master} />
+            <MasterServices master={master} />
           </div>
-          <MasterInfoBlock master={master}/>
+          <MasterInfoBlock master={master} />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

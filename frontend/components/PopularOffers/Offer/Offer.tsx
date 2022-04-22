@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {Master} from '_types';
-import styles from 'components/Offer/offer.module.scss';
+import { Master } from '_types';
+import styles from 'components/PopularOffers/Offer/offer.module.scss';
 
 interface Props {
   master: Master;
 }
 
-const Offer: React.FC<Props> = ({master}: Props) => {
+const Offer: React.FC<Props> = ({ master }: Props) => {
   return (
     <a className={styles.offer_wrapper} href={`/masters/${master.id}`}>
-      <div className={styles.image}/>
+      <div className={styles.image} />
       <div className={styles.first_line}>
         <div>
           {master.rate}

@@ -7,7 +7,7 @@ interface Props {
   reviews: number;
 }
 
-const RateSquare: React.FC<Props> = ({rate, reviews}: Props) => {
+const RateSquare: React.FC<Props> = ({ rate, reviews }: Props) => {
   return (
     <div className={styles.rate_wrapper}>
       <div className={styles.rate}>{rate}</div>

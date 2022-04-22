@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styles from 'components/PopularCategories/categories.module.scss';
-import Category from 'components/PopularCategories/Category/Category';
+import CategoryItem from 'components/HomePage/PopularCategories/CategoryItem/CategoryItem';
+import styles from './categories.module.scss';
 
 const PopularCategories = () => {
   const categories = [
@@ -40,7 +40,7 @@ const PopularCategories = () => {
     <section>
       <h2>Most popular categories</h2>
       <div className={styles.wrapper}>
-        {categories.map((item) => <Category category={item} key={item.id}/>)}
+        {categories.map((item) => <CategoryItem category={item} key={item.id} />)}
       </div>
     </section>
   );

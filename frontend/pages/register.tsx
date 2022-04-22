@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { createUser } from 'services/api/users';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import styles from 'styles/Auth.module.scss';
+import RegisterForm from 'components/Auth/RegisterForm';
+import FaceImg from 'assets/register_image.jpeg';
 
-const Register = () => {
+const Register: FC = () => {
   const router = useRouter();
 
   const [values, setValues] = useState({
@@ -16,29 +19,35 @@ const Register = () => {
     password: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e): Promise<void> => {
     e.preventDefault();
 
-    createUser({
-      name: values.name,
-      surname: values.surname,
-      phone: values.phone,
-      email: values.email,
-      password: values.password,
-      role: 'USER',
-    })
-      .then((user) => {
-        console.log(user);
+    try {
+      await createUser({
+        ...values,
+        role: 'USER',
+      });
+      await router.push('/login');
+    } catch (err) {
+      console.log('Incorrect login or password. Try again.');
+    }
 
-        router.push('/login');
-        return user;
-      })
-      .catch(() => alert('Incorrect login or password. Try again.'));
-
-    console.log(values);
+    // createUser({
+    //   name: values.name,
+    //   surname: values.surname,
+    //   phone: values.phone,
+    //   email: values.email,
+    //   password: values.password,
+    //   role: 'USER',
+    // })
+    //   .then((user) => {
+    //     router.push('/login');
+    //     return user;
+    //   })
+    //   .catch(() => console.log('Incorrect login or password. Try again.'));
   };
 
-  const updateField = (e) => {
+  const updateField = (e): void => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -47,55 +56,11 @@ const Register = () => {
 
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit}>
-        <label>
-          FirstName:
-          <input
-            value={values.name}
-            name="name"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <label>
-          LastName:
-          <input
-            value={values.surname}
-            name="surname"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <label>
-          Phone:
-          <input
-            value={values.phone}
-            name="phone"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            value={values.email}
-            name="email"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            value={values.password}
-            name="password"
-            type="password"
-            onChange={updateField}
-          />
-        </label>
-        <br />
-        <button>Submit</button>
-      </form>
+      <h1 className={styles.title}>Sign up</h1>
+      <div className={styles.content_wrapper}>
+        <Image src={FaceImg} alt="" />
+        <RegisterForm handleSubmit={handleSubmit} updateField={updateField} values={values} />
+      </div>
     </div>
   );
 };
