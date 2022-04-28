@@ -18,6 +18,7 @@ export interface USER {
   surname: string,
   phone: string,
   email: string,
+  role: string,
 }
 
 export interface Category {

@@ -2,12 +2,15 @@ import React from 'react';
 import styles from './Auth.module.scss';
 
 interface Props {
-  handleSubmit,
-  values,
-  updateField
+  handleSubmit: (e) => Promise<void>,
+  values: any,
+  updateField: (e) => void;
+  error: string;
 }
 
-const RegisterForm: React.FC<Props> = ({ handleSubmit, values, updateField }: Props) => {
+const RegisterForm: React.FC<Props> = ({
+  handleSubmit, values, updateField, error,
+}: Props) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <label className={styles.label}>
@@ -29,6 +32,7 @@ const RegisterForm: React.FC<Props> = ({ handleSubmit, values, updateField }: Pr
           className={styles.input}
         />
       </label>
+      <div>{error}</div>
       <button type="submit" onClick={handleSubmit} className={styles.button}>Submit</button>
       <div className={styles.subbutton}>
         Dont have an account?

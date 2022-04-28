@@ -57,3 +57,19 @@
 .subbutton {
   text-align: center;
 }
+
+.select {
+  width: 190px;
+  display: block;
+  height: 48px;
+  margin-top: 7px;
+  margin-bottom: 20px;
+
+  border: 1px solid #7ea67e;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 0px 10px;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+}

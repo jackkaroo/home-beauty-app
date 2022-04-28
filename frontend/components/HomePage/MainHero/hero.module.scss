@@ -4,6 +4,8 @@
 }
 
 .image {
+  height: 730px;
+  width: 100%;
   object-fit: cover;
   opacity: 1;
 
@@ -14,15 +16,23 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(47, 47, 47, 0.47);
+    background: rgba(59, 58, 58, 0.5);
+  }
+
+  span {
+    position: unset!important;
   }
 }
 
 .title {
   font-weight: 500;
-  font-size: 54px;
+  // padding-top: 40px;
+  // max-width: 600px;
+  font-size: 72px;
   color: #FDFDFD;
   text-align: center;
+  text-shadow: #a4a4a4 1px 0 10px;
+  cursor: pointer;
 }
 
 .text_wrapper {

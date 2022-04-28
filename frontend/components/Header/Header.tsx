@@ -1,7 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
+import { ReactComponent as Logo } from 'assets/logo.svg';
 import styles from 'components/Header/header.module.scss';
-import { getLocalToken, removeLocalToken } from 'services/api/base';
 import { useRouter } from 'next/router';
+import {
+  getLocalToken, removeLocalToken, getUserRole, getUserId, removeUserId, removeUserRole,
+} from 'services/api/users/localStorage';
 
 const Header: FC = () => {
   const [isAuth, setAuth] = useState(false);
@@ -10,40 +13,38 @@ const Header: FC = () => {
   const isHomePage = router.route === '/';
 
   const checkToken = (): void => {
-    if (getLocalToken('home_token')) {
+    if (getLocalToken()) {
       setAuth(true);
     }
   };
-  // doesnt work
-  useEffect(() => {
-    checkToken();
-    window.addEventListener('storage', checkToken);
 
-    return () => {
-      window.removeEventListener('storage', checkToken);
-    };
+  useEffect(() => {
+    console.log('ds');
+    checkToken();
   }, []);
 
   const handleLogout = (): void => {
-    removeLocalToken('home_token');
+    removeLocalToken();
+    removeUserId();
+    removeUserRole();
     window.location.reload();
   };
 
   return (
     <header className={styles.header}>
       <a className={styles.logo} href="/">
-        {/* <Image src={Logo} alt="logo"/> */}
+        Logo
       </a>
       {
         isAuth ? (
           <div>
-            <a>My cab</a>
-            <a onClick={handleLogout}>Logout</a>
+            <a className={isHomePage ? styles.white : undefined} href={`/cab/${getUserRole()}/${getUserId()}`}>My cab</a>
+            <a onClick={handleLogout} className={isHomePage ? styles.white : undefined}>Logout</a>
           </div>
         ) : (
           <div>
-            <a href="/login" className={isHomePage && styles.white}>Sign in</a>
-            <a href="/register" className={isHomePage && styles.white}>Sign up</a>
+            <a href="/login" className={isHomePage ? styles.white : undefined}>Sign in</a>
+            <a href="/register" className={isHomePage ? styles.white : undefined}>Sign up</a>
           </div>
         )
       }

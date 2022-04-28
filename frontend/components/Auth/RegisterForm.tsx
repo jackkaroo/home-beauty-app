@@ -1,13 +1,17 @@
 import React from 'react';
+import { RegisterUser } from 'pages/register';
 import styles from './Auth.module.scss';
 
 interface Props {
-  handleSubmit,
-  values,
-  updateField
+  handleSubmit: (e) => Promise<void>,
+  values: RegisterUser,
+  updateField: (e) => void;
+  error: string;
 }
 
-const RegisterForm: React.FC<Props> = ({ handleSubmit, values, updateField }: Props) => {
+const RegisterForm: React.FC<Props> = ({
+  handleSubmit, values, updateField, error,
+}: Props) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.name_wrapper}>
@@ -30,15 +34,24 @@ const RegisterForm: React.FC<Props> = ({ handleSubmit, values, updateField }: Pr
           />
         </label>
       </div>
-      <label className={styles.label}>
-        Phone
-        <input
-          value={values.phone}
-          name="phone"
-          onChange={updateField}
-          className={styles.input}
-        />
-      </label>
+      <div className={styles.name_wrapper}>
+        <label className={styles.label}>
+          Phone
+          <input
+            value={values.phone}
+            name="phone"
+            onChange={updateField}
+            className={styles.input_name}
+          />
+        </label>
+        <label className={styles.label}>
+          Client / Business
+          <select className={styles.select} name="role" value={values.role} onChange={updateField}>
+            <option value="client">Client</option>
+            <option value="business">Business</option>
+          </select>
+        </label>
+      </div>
       <label className={styles.label}>
         Email
         <input
@@ -58,6 +71,7 @@ const RegisterForm: React.FC<Props> = ({ handleSubmit, values, updateField }: Pr
           className={styles.input}
         />
       </label>
+      <div>{error}</div>
       <button type="submit" onClick={handleSubmit} className={styles.button}>Submit</button>
       <div className={styles.subbutton}>
         Already have an account?
