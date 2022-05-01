@@ -6,7 +6,7 @@ import styles from './categories.module.scss';
 const PopularCategories = () => {
   const categories = [
     {
-      id: 'manicure',
+      id: 'nails',
       name: 'Manicure',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
@@ -21,8 +21,8 @@ const PopularCategories = () => {
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      id: 'pedicure',
-      name: 'Pedicure',
+      id: 'makeup',
+      name: 'MakeUp',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {

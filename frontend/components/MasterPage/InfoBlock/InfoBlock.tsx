@@ -7,7 +7,7 @@ interface Props {
   master: Master;
 }
 
-const MasterInfoBlock: React.FC<Props> = ({ master }: Props) => {
+const InfoBlock: React.FC<Props> = ({ master }: Props) => {
   const workingHours = [
     {
       day: 'Monday',
@@ -80,4 +80,4 @@ const MasterInfoBlock: React.FC<Props> = ({ master }: Props) => {
   );
 };
 
-export default MasterInfoBlock;
+export default InfoBlock;

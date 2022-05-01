@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Arrow from 'assets/arrow.png';
+import Arrow from 'assets/icons/arrow.png';
 import { Category } from '_types';
 import styles from 'components/HomePage/PopularCategories/categories.module.scss';
 

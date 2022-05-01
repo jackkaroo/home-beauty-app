@@ -6,7 +6,7 @@ import data from 'data/popular_offers';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import styles from 'pages/categories/category.module.scss';
-import MasterShortInfo from 'components/MasterPage/MasterShortInfo/MasterShortInfo';
+import ShortInfo from 'components/MasterPage/ShortInfo/ShortInfo';
 
 const capitalizeFirstLetter = (string): string => {
   return string?.charAt(0).toUpperCase() + string?.slice(1);
@@ -23,13 +23,15 @@ const Category: FC = () => {
         <PopularOffers title={`${capitalizeFirstLetter(category)} - Popular offers`} />
       </div>
       <div className={styles.divider} />
-      <div className={styles.container}>
-        <div className={styles.btn_wrapper}>
-          <a className={styles.filter_btn}>Sort By</a>
-          <a className={styles.filter_btn}>Filters</a>
-        </div>
-        <div>
-          {data.map((item) => <MasterShortInfo master={item} key={item.id} />)}
+      <div className={styles.container_bg}>
+        <div className={styles.container}>
+          <div className={styles.btn_wrapper}>
+            <a className={styles.filter_btn}>Sort By</a>
+            <a className={styles.filter_btn}>Filters</a>
+          </div>
+          <div>
+            {data.map((item) => <ShortInfo master={item} key={item.id} />)}
+          </div>
         </div>
       </div>
       <Footer />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Master, Service } from '_types';
-import MasterService from 'components/MasterPage/MasterServices/Service';
+import ServiceItem from 'components/MasterPage/ServiceItem/Service';
 import styles from './master_services.module.scss';
 
 interface Props {
@@ -12,7 +12,7 @@ const MasterServices: React.FC<Props> = ({ master }: Props) => {
     <div>
       <div className={styles.title}>Services</div>
       {master.services.map(
-        (service: Service) => <MasterService service={service} key={service.service} />,
+        (service: Service) => <ServiceItem service={service} key={service.service} masterId={master.id} />,
       )}
       <a className={styles.book} href="/">BOOK</a>
     </div>

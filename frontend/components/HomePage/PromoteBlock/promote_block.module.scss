@@ -1,3 +1,5 @@
+@import "styles/common/colors";
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -47,12 +49,12 @@
   align-items: center;
   cursor: pointer;
 
-  background: darkseagreen;
+  background: $green_primary;
   color: white;
   box-shadow: 0 6px 12px rgba(201, 201, 201, 0.8);
 
   &:hover {
-    background: #7ea67e;
+    background: $green_dark;
     color: white;
   }
 }

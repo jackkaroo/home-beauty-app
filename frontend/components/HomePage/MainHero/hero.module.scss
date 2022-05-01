@@ -25,10 +25,10 @@
 }
 
 .title {
-  font-weight: 500;
+  font-weight: 300;
   // padding-top: 40px;
   // max-width: 600px;
-  font-size: 72px;
+  font-size: 38px;
   color: #FDFDFD;
   text-align: center;
   text-shadow: #a4a4a4 1px 0 10px;
@@ -40,4 +40,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.home {
+  font-family: 'Mrs Saint Delafield', cursive;
+  font-size: 170px;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-shadow: #a4a4a4 1px 0 5px;
 }

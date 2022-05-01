@@ -1,41 +1,4 @@
-.master_wrapper {
-  margin-bottom: 65px;
-  display: flex;
-}
-
-.master_image {
-  background: #C4C4C4;
-  border-radius: 5px;
-  width: 340px;
-  height: 220px;
-  margin-right: 40px;
-}
-
-.master_info {
-  min-width: 700px;
-}
-
-.master_services {
-  position: relative;
-}
-
-.title_row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2px;
-  align-items: center;
-}
-
-.title {
-  font-size: 30px;
-}
-
-.address {
-  font-size: 18px;
-  color: #818181;
-  margin-bottom: 16px;
-}
+@import "styles/common/colors";
 
 .service_wrapper {
   display: flex;
@@ -53,10 +16,11 @@
 
 .booking {
   display: flex;
+  align-items: center;
 }
 
 .book {
-  background: #C4C4C4;
+  background: $green_primary;
   border-radius: 5px;
   width: 70px;
   height: 30px;
@@ -66,11 +30,12 @@
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
+  float: right;
   margin-left: 40px;
+  color: white;
 
   &:hover {
-    background: rgba(196, 196, 196, 0.08);
-    border: 1px solid #C4C4C4;
+    background: $green_dark;
   }
 }
 
@@ -85,6 +50,12 @@
   font-size: 12px;
   color: #6A6161;
   text-transform: uppercase;
+}
+
+.checkbox {
+  margin-left: 30px;
+  width: 18px;
+  height: 18px;
 }
 
 .see_more {

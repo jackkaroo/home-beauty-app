@@ -2,6 +2,7 @@ export interface Master {
   id: number,
   firstName: string,
   lastName: string,
+  image: any;
   address: string,
   rate: string,
   reviews: number,

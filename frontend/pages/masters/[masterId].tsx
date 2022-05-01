@@ -7,12 +7,15 @@ import GrayButton from 'components/atoms/GrayButton/GrayButton';
 import styles from 'pages/masters/master.module.scss';
 import MasterWorks from 'components/MasterPage/MasterWorks/MasterWorks';
 import MasterServices from 'components/MasterPage/MasterServices/MasterServices';
-import MasterInfoBlock from 'components/MasterPage/MasterInfoBlock/MasterInfoBlock';
+import InfoBlock from 'components/MasterPage/InfoBlock/InfoBlock';
+
+import ImageMaster from 'assets/masters/1.jpeg';
 
 const master = {
   id: 2,
   firstName: 'Maria',
   lastName: 'Avramenko',
+  image: ImageMaster,
   address: 'Kreschatyk street, Kyiv',
   rate: '5.0',
   reviews: 171,
@@ -37,7 +40,7 @@ const master = {
       price: '120',
     },
   ],
-  background: '#C4BDAC',
+  background: 'rgba(124, 185, 192, 0.4)',
 };
 
 // get master from static props
@@ -73,7 +76,7 @@ const Master: FC = () => {
             <MasterWorks master={master} />
             <MasterServices master={master} />
           </div>
-          <MasterInfoBlock master={master} />
+          <InfoBlock master={master} />
         </div>
       </div>
       <Footer />

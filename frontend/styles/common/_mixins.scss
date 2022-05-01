@@ -1,6 +1,8 @@
+@import "colors";
+
 @mixin button {
-  background: #C4C4C4;
-  border: 1px solid #C4C4C4;
+  background: $green_primary;
+  color: white;
   border-radius: 5px;
   padding: 0 32px;
   height: 48px;
@@ -15,7 +17,7 @@
   box-shadow: 0 6px 12px rgba(201, 201, 201, 0.8);
 
   &:hover {
-    background: rgba(196, 196, 196, 0.08);
-    border: 1px solid #C4C4C4;
+    background: $green_dark;
+    color: white;
   }
 }

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ReactComponent as Logo } from 'assets/logo.svg';
+import LockIcon from 'assets/icons/logo.svg';
 import styles from 'components/Header/header.module.scss';
 import { useRouter } from 'next/router';
 import {
@@ -32,7 +32,7 @@ const Header: FC = () => {
 
   return (
     <header className={styles.header}>
-      <a className={styles.logo} href="/">
+      <a className={isHomePage ? styles.white : undefined} href="/">
         Logo
       </a>
       {

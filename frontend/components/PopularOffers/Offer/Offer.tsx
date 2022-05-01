@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 import { Master } from '_types';
 import styles from 'components/PopularOffers/Offer/offer.module.scss';
@@ -10,7 +11,7 @@ interface Props {
 const Offer: React.FC<Props> = ({ master }: Props) => {
   return (
     <a className={styles.offer_wrapper} href={`/masters/${master.id}`}>
-      <div className={styles.image} />
+      <div className={styles.image}><Image src={master.image} /></div>
       <div className={styles.first_line}>
         <div>
           {master.rate}

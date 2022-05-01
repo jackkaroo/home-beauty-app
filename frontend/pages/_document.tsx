@@ -14,6 +14,11 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Water+Brush&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="stylesheet"
           type="text/css"
@@ -25,6 +30,7 @@ export default function Document() {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+        <title>HomeBeauty</title>
       </Head>
       <body>
         <Main />

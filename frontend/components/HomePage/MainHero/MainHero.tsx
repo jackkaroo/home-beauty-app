@@ -11,7 +11,8 @@ const MainHero: FC = () => {
         <Image src={ImageBg} alt="bg" />
       </div>
       <div className={styles.text_wrapper}>
-        <h1 className={styles.title}>Find your beauty service</h1>
+        <div className={styles.home}>HomeBeauty</div>
+        <div className={styles.title}>Find your beauty service</div>
       </div>
     </section>
   );
