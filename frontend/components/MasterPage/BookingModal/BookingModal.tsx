@@ -3,9 +3,10 @@ import { Box, Modal, TextField } from '@material-ui/core';
 import CalendarPicker from 'components/CalendarPicker';
 import slots, { DayPeriod } from 'data/slots';
 import CrossLine from 'assets/icons/crossline.svg';
+import Check from 'assets/icons/check.svg';
 import styles from './BookingModal.module.scss';
 
-const style = {
+const styleModal = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
@@ -14,6 +15,18 @@ const style = {
   bgcolor: 'background.paper',
   boxShadow: 24,
   padding: 40,
+};
+
+const styleSuccess = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 500,
+  bgcolor: '#14751E',
+  boxShadow: 24,
+  padding: 40,
+  height: 300,
 };
 
 interface Props {
@@ -27,6 +40,7 @@ const BookingModal: React.FC<Props> = ({
 }: Props) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   // передавати саме слот на бекенд. у слоті інфа про дату
   const [freeSlots, setFreeSlots] = useState(slots);
@@ -34,6 +48,8 @@ const BookingModal: React.FC<Props> = ({
   const morningSlots = freeSlots.filter((slot) => slot.period === DayPeriod.Morning);
   const afternoonSlots = freeSlots.filter((slot) => slot.period === DayPeriod.Afternoon);
   const eveningSlots = freeSlots.filter((slot) => slot.period === DayPeriod.Evening);
+
+  console.log(selectedSlot);
 
   const isSlotSelected = (slot): boolean => {
     return slot === selectedSlot?.id;
@@ -47,6 +63,18 @@ const BookingModal: React.FC<Props> = ({
     setSelectedSlot(slot);
   };
 
+  const handleConfirmBooking = ():void => {
+    // api call
+    // validate and call props function
+    setBookingConfirmed(true);
+  };
+
+  const handleModalClose = (): void => {
+    setSelectedSlot(null);
+    setBookingConfirmed(false);
+    handleClose();
+  };
+
   useEffect(() => {
     // fetch free sloots here by master id
     // setFreeSlots(sloots)
@@ -54,68 +82,102 @@ const BookingModal: React.FC<Props> = ({
 
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
-        <Box sx={style}>
-          <CrossLine onClick={handleClose} className={styles.cross} />
-          <div style={{ maxWidth: 325, margin: '0 auto' }}>
-            <CalendarPicker
-              disablePast
-              value={selectedDate}
-              onChange={(date): void => {
-                handleChangeDate(date);
-              }}
-            />
-          </div>
-          <div className={styles.slots_wrapper}>
-            <div>
-              <div className={styles.period}>Morning</div>
-              {morningSlots.map((el) => (
-                <div
-                  key={el.id}
-                  className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
-                  onClick={(): void => handleSelectSlot(el)}
-                >
-                  {el.slotStart}
+      {
+        bookingConfirmed && (
+          <Modal
+            open={open}
+            onClose={handleModalClose}
+          >
+            <Box sx={styleSuccess}>
+              <div className={styles.success}>
+                <Check />
+                Success
+              </div>
+              <div className={styles.sub_success}>
+                {`you were booked for a ${selectedService.service} on Thursday at ${selectedSlot.slotStart}`}
+              </div>
+            </Box>
+          </Modal>
+        )
+      }
+      {
+        !bookingConfirmed && (
+          <Modal
+            open={open}
+            onClose={handleModalClose}
+          >
+
+            <Box sx={styleModal}>
+              <CrossLine onClick={handleModalClose} className={styles.cross} />
+              <div style={{ maxWidth: 325, margin: '0 auto' }}>
+                <CalendarPicker
+                  disablePast
+                  value={selectedDate}
+                  onChange={(date): void => {
+                    handleChangeDate(date);
+                  }}
+                />
+              </div>
+              <div className={styles.slots_wrapper}>
+                <div>
+                  <div className={styles.period}>Morning</div>
+                  {morningSlots.map((el) => (
+                    <div
+                      key={el.id}
+                      className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
+                      onClick={(): void => handleSelectSlot(el)}
+                    >
+                      {el.slotStart}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div>
-              <div className={styles.period}>Afternoon</div>
-              {afternoonSlots.map((el) => (
-                <div
-                  key={el.id}
-                  className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
-                  onClick={():void => handleSelectSlot(el)}
-                >
-                  {el.slotStart}
+                <div>
+                  <div className={styles.period}>Afternoon</div>
+                  {afternoonSlots.map((el) => (
+                    <div
+                      key={el.id}
+                      className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
+                      onClick={(): void => handleSelectSlot(el)}
+                    >
+                      {el.slotStart}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div>
-              <div className={styles.period}>Evening</div>
-              {eveningSlots.map((el) => (
-                <div
-                  key={el.id}
-                  className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
-                  onClick={():void => handleSelectSlot(el)}
-                >
-                  {el.slotStart}
+                <div>
+                  <div className={styles.period}>Evening</div>
+                  {eveningSlots.map((el) => (
+                    <div
+                      key={el.id}
+                      className={isSlotSelected(el.id) ? styles.slot_selected : styles.slot}
+                      onClick={(): void => handleSelectSlot(el)}
+                    >
+                      {el.slotStart}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            {selectedService.service}
-            {' '}
-            {selectedService.price}
-          </div>
-          <div className={styles.comments}>Comments</div>
-          <button type="submit" className={styles.button}>CONFIRM</button>
-        </Box>
-      </Modal>
+              </div>
+              <div className={styles.service_info}>
+                <div>
+                  <div>{selectedService.service}</div>
+                  {selectedSlot && (
+                    <div className={styles.time}>
+                      {`${selectedSlot.slotStart} - ${selectedSlot.slotEnd}`}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  {selectedService.price}
+                  {' '}
+                  UAH
+                </div>
+              </div>
+              <button type="submit" className={styles.button} onClick={handleConfirmBooking} disabled={!selectedSlot}>
+                CONFIRM
+              </button>
+            </Box>
+          </Modal>
+        )
+      }
     </div>
   );
 };

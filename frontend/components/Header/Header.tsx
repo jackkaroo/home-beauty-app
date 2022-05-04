@@ -10,7 +10,7 @@ const Header: FC = () => {
   const [isAuth, setAuth] = useState(false);
 
   const router = useRouter();
-  const isHomePage = router.route === '/';
+  const linkStyles = router.route === '/' ? styles.white : undefined;
 
   const checkToken = (): void => {
     if (getLocalToken()) {
@@ -19,7 +19,6 @@ const Header: FC = () => {
   };
 
   useEffect(() => {
-    console.log('ds');
     checkToken();
   }, []);
 
@@ -28,23 +27,24 @@ const Header: FC = () => {
     removeUserId();
     removeUserRole();
     window.location.reload();
+    router.push('/');
   };
 
   return (
     <header className={styles.header}>
-      <a className={isHomePage ? styles.white : undefined} href="/">
+      <a className={linkStyles} href="/">
         Logo
       </a>
       {
         isAuth ? (
           <div>
-            <a className={isHomePage ? styles.white : undefined} href={`/cab/${getUserRole()}/${getUserId()}`}>My cab</a>
-            <a onClick={handleLogout} className={isHomePage ? styles.white : undefined}>Logout</a>
+            <a className={linkStyles} href={`/cab/${getUserRole()}/${getUserId()}`}>My cab</a>
+            <a onClick={handleLogout} className={linkStyles}>Logout</a>
           </div>
         ) : (
           <div>
-            <a href="/login" className={isHomePage ? styles.white : undefined}>Sign in</a>
-            <a href="/register" className={isHomePage ? styles.white : undefined}>Sign up</a>
+            <a href="/login" className={linkStyles}>Sign in</a>
+            <a href="/register" className={linkStyles}>Sign up</a>
           </div>
         )
       }

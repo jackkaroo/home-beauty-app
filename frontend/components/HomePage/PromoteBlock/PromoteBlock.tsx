@@ -26,7 +26,7 @@ const PromoteBlock: React.FC<Props> = ({ isReverse }: Props) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, in consectetur
           pharetra in ipsum dignissim.
         </div>
-        <div className={styles.button}><a href="/">GET STARTED</a></div>
+        <div className={styles.button}><a href="/register">GET STARTED</a></div>
       </div>
     </section>
   );

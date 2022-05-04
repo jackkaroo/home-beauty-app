@@ -36,8 +36,7 @@ const ShortInfo: React.FC<Props> = ({ master }: Props) => {
             (service: Service) => (
               <ServiceItem
                 service={service}
-                key={service.service}
-                shortInfo
+                key={`short_${service.service}`}
                 masterId={master.id}
               />
             ),

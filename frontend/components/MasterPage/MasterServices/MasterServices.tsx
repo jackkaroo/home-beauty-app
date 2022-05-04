@@ -12,9 +12,14 @@ const MasterServices: React.FC<Props> = ({ master }: Props) => {
     <div>
       <div className={styles.title}>Services</div>
       {master.services.map(
-        (service: Service) => <ServiceItem service={service} key={service.service} masterId={master.id} />,
+        (service: Service) => (
+          <ServiceItem
+            service={service}
+            key={service.service}
+            masterId={master.id}
+          />
+        ),
       )}
-      <a className={styles.book} href="/">BOOK</a>
     </div>
   );
 };

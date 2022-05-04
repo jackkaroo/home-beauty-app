@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const User = () => {
+const User: FC = () => {
   return (
     <div>
       User cabinet
