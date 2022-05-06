@@ -18,15 +18,15 @@ const PromoteBlock: React.FC<Props> = ({ isReverse }: Props) => {
       <div className={styles.text_wrapper}>
         <div className={styles.title}>
           Got your business?
-          <br />
-          {' '}
-          Manage it with HomeBeauty
+          <br /> Manage it with HomeBeauty
         </div>
         <div className={styles.subtitle}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, in consectetur
-          pharetra in ipsum dignissim.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, in
+          consectetur pharetra in ipsum dignissim.
         </div>
-        <div className={styles.button}><a href="/register">GET STARTED</a></div>
+        <div className={styles.button}>
+          <a href="/register">GET STARTED</a>
+        </div>
       </div>
     </section>
   );

@@ -50,14 +50,15 @@ const Master: FC = () => {
       <Header />
       <div className={styles.container}>
         <div className={styles.title_row}>
-          <div className={styles.background} style={{ background: master.background }} />
+          <div
+            className={styles.background}
+            style={{ background: master.background }}
+          />
           <div className={styles.flex}>
             <div className={styles.master_avatar} />
             <div>
               <span className={styles.title}>
-                {master.firstName}
-                {' '}
-                {master.lastName}
+                {master.firstName} {master.lastName}
               </span>
               <div className={styles.desc}>
                 <span>@maria007</span>

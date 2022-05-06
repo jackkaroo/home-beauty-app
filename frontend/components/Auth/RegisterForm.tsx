@@ -3,14 +3,17 @@ import { RegisterUser } from 'pages/register';
 import styles from './Auth.module.scss';
 
 interface Props {
-  handleSubmit: (e) => Promise<void>,
-  values: RegisterUser,
-  updateField: (e) => void;
+  handleSubmit: (e: any) => Promise<void>;
+  values: RegisterUser;
+  updateField: (e: any) => void;
   error: string;
 }
 
 const RegisterForm: React.FC<Props> = ({
-  handleSubmit, values, updateField, error,
+  handleSubmit,
+  values,
+  updateField,
+  error,
 }: Props) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
@@ -46,7 +49,12 @@ const RegisterForm: React.FC<Props> = ({
         </label>
         <label className={styles.label}>
           Client / Business
-          <select className={styles.select} name="role" value={values.role} onChange={updateField}>
+          <select
+            className={styles.select}
+            name="role"
+            value={values.role}
+            onChange={updateField}
+          >
             <option value="client">Client</option>
             <option value="business">Business</option>
           </select>
@@ -72,10 +80,14 @@ const RegisterForm: React.FC<Props> = ({
         />
       </label>
       <div>{error}</div>
-      <button type="submit" onClick={handleSubmit} className={styles.button}>Submit</button>
+      <button type="submit" onClick={handleSubmit} className={styles.button}>
+        Submit
+      </button>
       <div className={styles.subbutton}>
         Already have an account?
-        <a href="/login"><b> Sign in</b></a>
+        <a href="/login">
+          <b> Sign in</b>
+        </a>
       </div>
     </form>
   );

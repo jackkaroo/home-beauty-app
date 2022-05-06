@@ -23,7 +23,9 @@ const PopularOffers: React.FC<Props> = ({ title }: Props) => {
     <section className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       <Slider {...settings}>
-        {data.map((item) => <Offer master={item} key={item.id} />)}
+        {data.map((item) => (
+          <Offer master={item} key={item.id} />
+        ))}
       </Slider>
     </section>
   );

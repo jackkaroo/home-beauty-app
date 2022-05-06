@@ -23,25 +23,23 @@ const ShortInfo: React.FC<Props> = ({ master }: Props) => {
         <a className={styles.title_row} href={`/masters/${master.id}`}>
           <div>
             <div className={styles.title}>
-              {master.firstName}
-              {' '}
-              {master.lastName}
+              {master.firstName} {master.lastName}
             </div>
             <div className={styles.address}>{master.address}</div>
           </div>
           <RateSquare rate={master.rate} reviews={master.reviews} />
         </a>
         <div className={styles.master_services}>
-          {slicedServices.map(
-            (service: Service) => (
-              <ServiceItem
-                service={service}
-                key={`short_${service.service}`}
-                masterId={master.id}
-              />
-            ),
-          )}
-          <a className={styles.see_more} href={`/masters/${master.id}`}>see more</a>
+          {slicedServices.map((service: Service) => (
+            <ServiceItem
+              service={service}
+              key={`short_${service.service}`}
+              masterId={master.id}
+            />
+          ))}
+          <a className={styles.see_more} href={`/masters/${master.id}`}>
+            see more
+          </a>
         </div>
       </div>
     </div>

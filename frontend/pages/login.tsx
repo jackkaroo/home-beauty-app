@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import jwt_decode from 'jwt-decode';
 
@@ -8,7 +8,11 @@ import FaceImg from 'assets/register_image.jpeg';
 import LoginForm from 'components/Auth/LoginForm';
 import { USER } from '_types';
 import { authorizeUser } from 'services/api/users';
-import { setLocalToken, setUserId, setUserRole } from 'services/api/users/localStorage';
+import {
+  setLocalToken,
+  setUserId,
+  setUserRole,
+} from 'services/api/users/localStorage';
 
 const Login: FC = () => {
   const router = useRouter();
@@ -19,7 +23,9 @@ const Login: FC = () => {
   });
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e): Promise<void> => {
+  const handleSubmit = async (
+    e: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     e.preventDefault();
 
     authorizeUser(values)
@@ -41,7 +47,7 @@ const Login: FC = () => {
       });
   };
 
-  const updateField = (e): void => {
+  const updateField = (e: ChangeEvent<HTMLInputElement>): void => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,

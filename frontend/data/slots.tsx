@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-shadow
 export const enum DayPeriod {
-'Morning', 'Afternoon', 'Evening'
+  'Morning',
+  'Afternoon',
+  'Evening',
 }
 
 const slots = [

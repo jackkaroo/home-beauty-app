@@ -3,7 +3,12 @@ import LockIcon from 'assets/icons/logo.svg';
 import styles from 'components/Header/header.module.scss';
 import { useRouter } from 'next/router';
 import {
-  getLocalToken, removeLocalToken, getUserRole, getUserId, removeUserId, removeUserRole,
+  getLocalToken,
+  removeLocalToken,
+  getUserRole,
+  getUserId,
+  removeUserId,
+  removeUserRole,
 } from 'services/api/users/localStorage';
 
 const Header: FC = () => {
@@ -35,19 +40,28 @@ const Header: FC = () => {
       <a className={linkStyles} href="/">
         Logo
       </a>
-      {
-        isAuth ? (
-          <div>
-            <a className={linkStyles} href={`/cab/${getUserRole()}/${getUserId()}`}>My cab</a>
-            <a onClick={handleLogout} className={linkStyles}>Logout</a>
-          </div>
-        ) : (
-          <div>
-            <a href="/login" className={linkStyles}>Sign in</a>
-            <a href="/register" className={linkStyles}>Sign up</a>
-          </div>
-        )
-      }
+      {isAuth ? (
+        <div>
+          <a
+            className={linkStyles}
+            href={`/cab/${getUserRole()}/${getUserId()}`}
+          >
+            My cab
+          </a>
+          <a onClick={handleLogout} className={linkStyles}>
+            Logout
+          </a>
+        </div>
+      ) : (
+        <div>
+          <a href="/login" className={linkStyles}>
+            Sign in
+          </a>
+          <a href="/register" className={linkStyles}>
+            Sign up
+          </a>
+        </div>
+      )}
     </header>
   );
 };

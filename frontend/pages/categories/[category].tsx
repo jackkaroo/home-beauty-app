@@ -8,7 +8,12 @@ import Header from 'components/Header/Header';
 import styles from 'pages/categories/category.module.scss';
 import ShortInfo from 'components/MasterPage/ShortInfo/ShortInfo';
 
-const capitalizeFirstLetter = (string): string => {
+const capitalizeFirstLetter = (
+  string: string | undefined | string[]
+): string => {
+  if (typeof string !== 'string') {
+    return '';
+  }
   return string?.charAt(0).toUpperCase() + string?.slice(1);
 };
 
@@ -20,7 +25,9 @@ const Category: FC = () => {
     <div>
       <Header />
       <div className={styles.offers_wrapper}>
-        <PopularOffers title={`${capitalizeFirstLetter(category)} - Popular offers`} />
+        <PopularOffers
+          title={`${capitalizeFirstLetter(category)} - Popular offers`}
+        />
       </div>
       <div className={styles.divider} />
       <div className={styles.container_bg}>
@@ -30,7 +37,9 @@ const Category: FC = () => {
             <a className={styles.filter_btn}>Filters</a>
           </div>
           <div>
-            {data.map((item) => <ShortInfo master={item} key={item.id} />)}
+            {data.map((item) => (
+              <ShortInfo master={item} key={item.id} />
+            ))}
           </div>
         </div>
       </div>

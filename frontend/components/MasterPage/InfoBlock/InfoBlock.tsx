@@ -45,11 +45,7 @@ const InfoBlock: React.FC<Props> = ({ master }: Props) => {
       <hr className={styles.hr} />
       <div className="flex">
         <div className={styles.rate}>{master.rate}</div>
-        <div className={styles.reviews}>
-          {master.reviews}
-          {' '}
-          reviews
-        </div>
+        <div className={styles.reviews}>{master.reviews} reviews</div>
       </div>
       <hr className={styles.hr} />
       <div>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
 import { createUser } from 'services/api/users';
 import { useRouter } from 'next/router';
@@ -30,7 +30,9 @@ const Register: FC = () => {
   });
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e): Promise<void> => {
+  const handleSubmit = async (
+    e: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     e.preventDefault();
 
     createUser({
@@ -47,10 +49,10 @@ const Register: FC = () => {
       });
   };
 
-  const updateField = (e): void => {
+  const updateField = (e: ChangeEvent<HTMLInputElement>): void => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value,
+      [e?.target.name]: e.target.value,
     });
   };
 

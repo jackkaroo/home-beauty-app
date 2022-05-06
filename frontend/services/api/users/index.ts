@@ -1,6 +1,6 @@
 import { API_URL } from 'services/api/base';
 
-export const authorizeUser = async (data): Promise<any> => {
+export const authorizeUser = async (data: any): Promise<any> => {
   const url = `${API_URL}/login`;
 
   const response = await fetch(url, {
@@ -14,7 +14,7 @@ export const authorizeUser = async (data): Promise<any> => {
   return response.json();
 };
 
-export const createUser = async (data): Promise<any> => {
+export const createUser = async (data: any): Promise<any> => {
   const url = `${API_URL}/register`;
 
   const response = await fetch(url, {

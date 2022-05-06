@@ -11,11 +11,7 @@ const RateSquare: React.FC<Props> = ({ rate, reviews }: Props) => {
   return (
     <div className={styles.rate_wrapper}>
       <div className={styles.rate}>{rate}</div>
-      <div className={styles.reviews}>
-        {reviews}
-        {' '}
-        reviews
-      </div>
+      <div className={styles.reviews}>{reviews} reviews</div>
     </div>
   );
 };

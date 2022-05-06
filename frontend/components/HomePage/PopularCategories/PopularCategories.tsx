@@ -40,7 +40,9 @@ const PopularCategories = () => {
     <section>
       <h2>Most popular categories</h2>
       <div className={styles.wrapper}>
-        {categories.map((item) => <CategoryItem category={item} key={item.id} />)}
+        {categories.map((item) => (
+          <CategoryItem category={item} key={item.id} />
+        ))}
       </div>
     </section>
   );

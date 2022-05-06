@@ -34,14 +34,12 @@ const ServiceItem: React.FC<Props> = ({ masterId, service }: Props) => {
         <div className={styles.service}>{service.service}</div>
         <div className={styles.booking}>
           <div>
-            <div className={styles.price}>
-              {service.price}
-              {' '}
-              UAH
-            </div>
+            <div className={styles.price}>{service.price} UAH</div>
             <div className={styles.duration}>{service.duration}</div>
           </div>
-          <button type="submit" className={styles.book} onClick={handleOpen}>BOOK</button>
+          <button type="submit" className={styles.book} onClick={handleOpen}>
+            BOOK
+          </button>
         </div>
       </div>
     </>
