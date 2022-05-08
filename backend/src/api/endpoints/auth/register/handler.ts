@@ -9,7 +9,7 @@ import {userSelect} from '../../users/inputs/select-input';
 import {schema} from './schema';
 
 export async function handler(req: Request, res: Response): Promise<void> {
-  const {name, surname, phone, email, password, role} = req.body;
+  const {name, surname, phone, email, password, role, categoryId} = req.body;
 
   const existingUser = await prisma.user.findUnique({where: {email: email}});
 
@@ -26,6 +26,7 @@ export async function handler(req: Request, res: Response): Promise<void> {
       phone,
       hash,
       role,
+      categoryId
     },
     select: userSelect,
   });

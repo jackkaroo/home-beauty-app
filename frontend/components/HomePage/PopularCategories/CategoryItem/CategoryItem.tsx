@@ -13,7 +13,7 @@ const CategoryItem: React.FC<Props> = ({ category }: Props) => {
   return (
     <a className={styles.category_wrapper} href={`/categories/${category.id}`}>
       <div className={styles.name}>{category.name}</div>
-      <div>{category.desc}</div>
+      <div className={styles.desc}>{category?.description}</div>
       <div className={styles.arrow}>
         <Image src={Arrow} alt="" />
       </div>

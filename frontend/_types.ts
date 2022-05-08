@@ -27,7 +27,7 @@ export interface USER {
 export interface Category {
   id: string;
   name: string;
-  desc: string;
+  description: string;
 }
 
 export interface Service {

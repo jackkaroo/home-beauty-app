@@ -4,7 +4,7 @@ import { createUser } from 'services/api/users';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import styles from 'styles/Auth.module.scss';
+import styles from 'styles/pages/Auth.module.scss';
 import RegisterForm from 'components/Auth/RegisterForm';
 import FaceImg from 'assets/register_image.jpeg';
 
@@ -15,6 +15,7 @@ export interface RegisterUser {
   email: string;
   password: string;
   role: string;
+  categoryId: number;
 }
 
 const Register: FC = () => {
@@ -26,7 +27,8 @@ const Register: FC = () => {
     phone: '',
     email: '',
     password: '',
-    role: 'USER',
+    role: '',
+    categoryId: 1,
   });
   const [error, setError] = useState('');
 

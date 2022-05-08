@@ -20,17 +20,28 @@ model User {
 
   avatarId Int?
   avatar   Image? @relation(fields: [avatarId], references: [id], onDelete: SetNull)
+
+  categoryId Int?
+  category Category? @relation(fields: [categoryId], references: [id])
 }
 
 enum UserRole {
-  USER
-  MASTER
+  client
+  master
 }
 
 model Image {
   id Int @id @default(autoincrement())
 
   path String
+  User User[]
+}
 
-  User    User[]
+model Category {
+  id Int @id @default(autoincrement())
+
+  name String
+  description String?
+
+  masters User[]
 }

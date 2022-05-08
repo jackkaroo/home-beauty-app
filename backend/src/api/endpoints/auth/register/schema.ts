@@ -9,7 +9,8 @@ const bodySchema: Schema = {
     phone: {type: 'string', isNotEmpty: true},
     email: {type: 'string', format: 'email', isNotEmpty: true},
     password: {type: 'string', format: 'password', isNotEmpty: true},
-    role: {type: 'string', isNotEmpty: true}
+    role: {type: 'string', isNotEmpty: true},
+    categoryId: {type: 'integer', isNotEmpty: true}
   },
   required: ['name', 'email', 'password', 'phone'],
   additionalProperties: false,

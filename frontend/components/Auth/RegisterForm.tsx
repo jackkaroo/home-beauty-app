@@ -55,8 +55,8 @@ const RegisterForm: React.FC<Props> = ({
             value={values.role}
             onChange={updateField}
           >
-            <option value="client">Client</option>
-            <option value="business">Business</option>
+            <option value="CLIENT">Client</option>
+            <option value="MASTER">Business</option>
           </select>
         </label>
       </div>

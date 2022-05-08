@@ -4,7 +4,7 @@ import RateSquare from 'components/atoms/RateSquare/RateSquare';
 
 import Footer from 'components/Footer/Footer';
 import GrayButton from 'components/atoms/GrayButton/GrayButton';
-import styles from 'pages/masters/master.module.scss';
+import styles from 'styles/pages/master.module.scss';
 import MasterWorks from 'components/MasterPage/MasterWorks/MasterWorks';
 import MasterServices from 'components/MasterPage/MasterServices/MasterServices';
 import InfoBlock from 'components/MasterPage/InfoBlock/InfoBlock';

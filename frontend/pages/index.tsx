@@ -7,9 +7,15 @@ import PopularCategories from 'components/HomePage/PopularCategories/PopularCate
 import PromoteBlock from 'components/HomePage/PromoteBlock/PromoteBlock';
 import Footer from 'components/Footer/Footer';
 
-import styles from 'styles/Home.module.css';
+import styles from 'styles/pages/Home.module.css';
+import { API_URL } from 'services/api/base';
+import { Category } from '_types';
 
-const Home: FC = () => {
+interface Props {
+  categories: Category[];
+}
+
+const Home: FC<Props> = ({ categories }) => {
   return (
     <div>
       <Head>
@@ -22,7 +28,7 @@ const Home: FC = () => {
         <MainHero />
         <div className="container">
           <PopularOffers title="Popular offers " />
-          <PopularCategories />
+          <PopularCategories categories={categories} />
           <PromoteBlock />
           <PromoteBlock isReverse />
         </div>
@@ -31,6 +37,14 @@ const Home: FC = () => {
       <Footer />
     </div>
   );
+};
+
+export const getServerSideProps = async () => {
+  const res = await fetch(`${API_URL}/categories`);
+  const categories = await res.json();
+  return {
+    props: { categories },
+  };
 };
 
 export default Home;

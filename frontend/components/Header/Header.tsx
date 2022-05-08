@@ -44,7 +44,7 @@ const Header: FC = () => {
         <div>
           <a
             className={linkStyles}
-            href={`/cab/${getUserRole()}/${getUserId()}`}
+            href={`/cab/${getUserRole()?.toLowerCase()}/${getUserId()}`}
           >
             My cab
           </a>

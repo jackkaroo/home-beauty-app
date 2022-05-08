@@ -7,7 +7,7 @@ import {updateUserHandler} from './update-user/handler';
 const path = '/users';
 
 export function initUserEndpoints(app: Application): void {
-  app.use(path, authenticate);
+  // app.use(path, authenticate);
   app.get(path, getUsersHandler);
   app.get(`${path}/:id`, getUserByIdHandler);
   app.patch(path, updateUserHandler);

@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import jwt_decode from 'jwt-decode';
 
-import styles from 'styles/Auth.module.scss';
+import styles from 'styles/pages/Auth.module.scss';
 import Image from 'next/image';
 import FaceImg from 'assets/register_image.jpeg';
 import LoginForm from 'components/Auth/LoginForm';
@@ -37,6 +37,7 @@ const Login: FC = () => {
         const user: USER = jwt_decode(data.token);
         setUserId(user.id);
         setUserRole(user.role);
+        console.log(user);
 
         setLocalToken(data.token);
         await router.push('/');

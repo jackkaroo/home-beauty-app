@@ -5,7 +5,7 @@ import PopularOffers from 'components/PopularOffers/PopularOffers';
 import data from 'data/popular_offers';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
-import styles from 'pages/categories/category.module.scss';
+import styles from 'styles/pages/category.module.scss';
 import ShortInfo from 'components/MasterPage/ShortInfo/ShortInfo';
 
 const capitalizeFirstLetter = (
