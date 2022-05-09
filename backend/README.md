@@ -1,5 +1,3 @@
-# inspire-me
-
 1. Install PostgreSQL if not installed: https://www.postgresql.org/download/
 2. Install Node if not installed: https://nodejs.org/uk/download/
 3. From project folder install all packages with command: **npm i**

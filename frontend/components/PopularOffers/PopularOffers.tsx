@@ -4,12 +4,16 @@ import Slider from 'react-slick';
 import data from 'data/popular_offers';
 import Offer from 'components/PopularOffers/Offer/Offer';
 import styles from 'components/PopularOffers/offers.module.scss';
+import { Master } from '_types';
 
 interface Props {
   title: string;
+  popularMasters: Master[];
 }
 
-const PopularOffers: React.FC<Props> = ({ title }: Props) => {
+const PopularOffers: React.FC<Props> = ({ title, popularMasters }: Props) => {
+  const popularMastersSliced = popularMasters?.slice(0, 4);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -23,7 +27,7 @@ const PopularOffers: React.FC<Props> = ({ title }: Props) => {
     <section className={styles.wrapper}>
       <h2 className={styles.title}>{title}</h2>
       <Slider {...settings}>
-        {data.map((item) => (
+        {popularMastersSliced?.map((item) => (
           <Offer master={item} key={item.id} />
         ))}
       </Slider>
@@ -32,15 +36,3 @@ const PopularOffers: React.FC<Props> = ({ title }: Props) => {
 };
 
 export default PopularOffers;
-
-const getStaticProps = async () => {
-  // get most populars masters
-  const res = await fetch('https://.../posts');
-  const dataK = await res.json();
-
-  return {
-    props: {
-      dataK,
-    },
-  };
-};

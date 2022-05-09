@@ -9,13 +9,14 @@ import Footer from 'components/Footer/Footer';
 
 import styles from 'styles/pages/Home.module.css';
 import { API_URL } from 'services/api/base';
-import { Category } from '_types';
+import { Category, Master } from '_types';
 
 interface Props {
   categories: Category[];
+  popularMasters: Master[];
 }
 
-const Home: FC<Props> = ({ categories }) => {
+const Home: FC<Props> = ({ categories, popularMasters }) => {
   return (
     <div>
       <Head>
@@ -27,7 +28,10 @@ const Home: FC<Props> = ({ categories }) => {
       <main className={styles.main}>
         <MainHero />
         <div className="container">
-          <PopularOffers title="Popular offers " />
+          <PopularOffers
+            title="Popular offers"
+            popularMasters={popularMasters}
+          />
           <PopularCategories categories={categories} />
           <PromoteBlock />
           <PromoteBlock isReverse />
@@ -40,10 +44,13 @@ const Home: FC<Props> = ({ categories }) => {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${API_URL}/categories`);
-  const categories = await res.json();
+  const categoriesJson = await fetch(`${API_URL}/categories`);
+  const categories = await categoriesJson.json();
+
+  const popularMastersJson = await fetch(`${API_URL}/users/popular`);
+  const popularMasters = await popularMastersJson.json();
   return {
-    props: { categories },
+    props: { categories, popularMasters },
   };
 };
 

@@ -1,19 +1,25 @@
 .offer_wrapper {
   margin-right: 45px;
   display: block;
+  max-width: 400px;
 }
 
 .image {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  //width: 100%;
+  //border-radius: 5px;
+  //margin-bottom: 10px;
+  //
+  //img {
+  //  width: 400px!important;
+  //  max-height: 220px!important;
+  //  object-fit: fill!important;
+  //  border-radius: 5px;
+  //}
 
-  img {
-    width: 400px!important;
-    max-height: 220px!important;
-    object-fit: fill!important;
-    border-radius: 5px;
-  }
+  // temp
+  width: 400px!important;
+  height: 220px!important;
+  background: gray;
 }
 
 .flex {

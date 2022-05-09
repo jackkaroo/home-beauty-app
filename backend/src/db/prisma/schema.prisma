@@ -19,7 +19,7 @@ model User {
   role  UserRole
 
   address String?
-  rate String?
+  rate Float?
   reviews String?
   price String?
   nickname String?
