@@ -9,6 +9,7 @@
   height: 220px;
   margin-right: 40px;
   flex-shrink: 0;
+  background: gray;
 }
 
 .master_info {
@@ -30,6 +31,7 @@
 .title {
   font-size: 30px;
   margin-bottom: 5px;
+  text-transform: capitalize;
 }
 
 .address {

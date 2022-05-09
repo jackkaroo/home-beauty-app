@@ -18,7 +18,7 @@ export async function handler(req: Request, res: Response): Promise<void> {
   }
 
   const hash: string = await bcrypt.hash(password, 13);
-  const user: Omit<User, 'hash'> = await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       email,
       name,
@@ -26,7 +26,7 @@ export async function handler(req: Request, res: Response): Promise<void> {
       phone,
       hash,
       role,
-      categoryId
+      categoryId,
     },
     select: userSelect,
   });

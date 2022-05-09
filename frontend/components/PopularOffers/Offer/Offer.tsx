@@ -25,7 +25,7 @@ const Offer: React.FC<Props> = ({ master }: Props) => {
       </div>
       <div className={styles.flex}>
         <div>
-          {master.firstName} {master.lastName}
+          {master.name} {master.surname}
         </div>
         <div className={styles.category}>{master.category}</div>
       </div>

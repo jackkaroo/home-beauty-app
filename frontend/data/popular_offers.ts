@@ -6,8 +6,8 @@ import Image4 from 'assets/masters/4.jpeg';
 const data = [
   {
     id: 0,
-    firstName: 'Anastasia',
-    lastName: 'Malyar',
+    name: 'Anastasia',
+    surname: 'Malyar',
     image: Image1,
     address: 'Oleina street, Kyiv',
     rate: '4.8',
@@ -16,17 +16,17 @@ const data = [
     category: 'cosmetology',
     services: [
       {
-        service: 'cleanse',
+        name: 'cleanse',
         duration: '1,5 hour',
         price: '700',
       },
       {
-        service: 'piling',
+        name: 'piling',
         duration: '0.5 hour',
         price: '900',
       },
       {
-        service: 'consultation',
+        name: 'consultation',
         duration: '1 hour',
         price: '500',
       },
@@ -34,8 +34,8 @@ const data = [
   },
   {
     id: 1,
-    firstName: 'Maria',
-    lastName: 'Avramenko',
+    name: 'Maria',
+    surname: 'Avramenko',
     image: Image2,
     address: 'Kreschatyk street, Kyiv',
     rate: '5.0',
@@ -44,17 +44,17 @@ const data = [
     category: 'nails',
     services: [
       {
-        service: 'manicure',
+        name: 'manicure',
         duration: '1,5 hour',
         price: '120',
       },
       {
-        service: 'manicure',
+        name: 'manicure',
         duration: '1,5 hour',
         price: '120',
       },
       {
-        service: 'manicure',
+        name: 'manicure',
         duration: '1,5 hour',
         price: '120',
       },
@@ -62,8 +62,8 @@ const data = [
   },
   {
     id: 2,
-    firstName: 'Maria',
-    lastName: 'Avramenko',
+    name: 'Maria',
+    surname: 'Avramenko',
     image: Image3,
     address: 'Bazhana street, Kyiv',
     rate: '4.5',
@@ -72,17 +72,17 @@ const data = [
     category: 'cosmetology',
     services: [
       {
-        service: 'consultation',
+        name: 'consultation',
         duration: '1 hour',
         price: '1500',
       },
       {
-        service: 'cleanse',
+        name: 'cleanse',
         duration: '1,5 hour',
         price: '1700',
       },
       {
-        service: 'piling',
+        name: 'piling',
         duration: '0.5 hour',
         price: '1900',
       },
@@ -90,8 +90,8 @@ const data = [
   },
   {
     id: 3,
-    firstName: 'Maria',
-    lastName: 'Avramenko',
+    name: 'Maria',
+    surname: 'Avramenko',
     image: Image4,
     address: 'Druzby street, Ternopil',
     rate: '5.0',
@@ -100,17 +100,17 @@ const data = [
     category: 'laser',
     services: [
       {
-        service: 'legs',
+        name: 'legs',
         duration: '1 hour',
         price: '900',
       },
       {
-        service: 'bikini',
+        name: 'bikini',
         duration: '0.5 hour',
         price: '1200',
       },
       {
-        service: 'arms',
+        name: 'arms',
         duration: '0.5 hour',
         price: '300',
       },

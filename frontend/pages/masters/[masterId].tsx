@@ -13,8 +13,8 @@ import ImageMaster from 'assets/masters/1.jpeg';
 
 const master = {
   id: 2,
-  firstName: 'Maria',
-  lastName: 'Avramenko',
+  name: 'Maria',
+  surname: 'Avramenko',
   image: ImageMaster,
   address: 'Kreschatyk street, Kyiv',
   rate: '5.0',
@@ -25,17 +25,17 @@ const master = {
   phone: '+123456789',
   services: [
     {
-      service: 'manicure',
+      name: 'manicure',
       duration: '1,5 hour',
       price: '120',
     },
     {
-      service: 'manicure',
+      name: 'manicure',
       duration: '1,5 hour',
       price: '120',
     },
     {
-      service: 'manicure',
+      name: 'manicure',
       duration: '1,5 hour',
       price: '120',
     },
@@ -58,7 +58,7 @@ const Master: FC = () => {
             <div className={styles.master_avatar} />
             <div>
               <span className={styles.title}>
-                {master.firstName} {master.lastName}
+                {master.name} {master.surname}
               </span>
               <div className={styles.desc}>
                 <span>@maria007</span>

@@ -11,29 +11,30 @@ interface Props {
 }
 
 const ShortInfo: React.FC<Props> = ({ master }: Props) => {
-  const slicedServices = master.services.slice(0, 3);
+  console.log(master);
+  const slicedServices = master.services?.slice(0, 3);
 
   return (
     <div className={styles.master_wrapper}>
       <a className={styles.master_image} href={`/masters/${master.id}`}>
         {' '}
-        <Image src={master.image} />
+        {/*<Image src={master.image} />*/}
       </a>
       <div className={styles.master_info}>
         <a className={styles.title_row} href={`/masters/${master.id}`}>
           <div>
             <div className={styles.title}>
-              {master.firstName} {master.lastName}
+              {master.name} {master.surname}
             </div>
             <div className={styles.address}>{master.address}</div>
           </div>
           <RateSquare rate={master.rate} reviews={master.reviews} />
         </a>
         <div className={styles.master_services}>
-          {slicedServices.map((service: Service) => (
+          {slicedServices?.map((service: Service) => (
             <ServiceItem
               service={service}
-              key={`short_${service.service}`}
+              key={`short_${service.name}`}
               masterId={master.id}
             />
           ))}

@@ -14,6 +14,8 @@ const ServiceItem: React.FC<Props> = ({ masterId, service }: Props) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
+  console.log(service);
+
   const handleOpen = (): void => {
     if (getLocalToken()) {
       setOpen(true);
@@ -31,7 +33,7 @@ const ServiceItem: React.FC<Props> = ({ masterId, service }: Props) => {
         handleClose={handleClose}
       />
       <div className={styles.service_wrapper}>
-        <div className={styles.service}>{service.service}</div>
+        <div className={styles.service}>{service.name}</div>
         <div className={styles.booking}>
           <div>
             <div className={styles.price}>{service.price} UAH</div>

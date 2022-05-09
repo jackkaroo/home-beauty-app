@@ -7,6 +7,9 @@ import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import styles from 'styles/pages/category.module.scss';
 import ShortInfo from 'components/MasterPage/ShortInfo/ShortInfo';
+import { GetStaticProps } from 'next';
+import { API_URL } from 'services/api/base';
+import { Master } from '_types';
 
 const capitalizeFirstLetter = (
   string: string | undefined | string[]
@@ -17,16 +20,18 @@ const capitalizeFirstLetter = (
   return string?.charAt(0).toUpperCase() + string?.slice(1);
 };
 
-const Category: FC = () => {
-  const router = useRouter();
-  const { category } = router.query;
+interface Props {
+  masters: Master[];
+  category: any;
+}
 
+const Category: FC<Props> = ({ masters, category }) => {
   return (
     <div>
       <Header />
       <div className={styles.offers_wrapper}>
         <PopularOffers
-          title={`${capitalizeFirstLetter(category)} - Popular offers`}
+          title={`${capitalizeFirstLetter(category.name)} - Popular offers`}
         />
       </div>
       <div className={styles.divider} />
@@ -37,7 +42,7 @@ const Category: FC = () => {
             <a className={styles.filter_btn}>Filters</a>
           </div>
           <div>
-            {data.map((item) => (
+            {masters?.map((item) => (
               <ShortInfo master={item} key={item.id} />
             ))}
           </div>
@@ -48,16 +53,27 @@ const Category: FC = () => {
   );
 };
 
-export default Category;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const categoryId = context?.params?.category;
+  const mastersRes = await fetch(`${API_URL}/users/category/${categoryId}`);
+  const masters = await mastersRes.json();
 
-const getStaticProps = async () => {
-  // get masters by categories
-  const res = await fetch('https://.../posts');
-  const dataK = await res.json();
-
+  const categoryRes = await fetch(`${API_URL}/categories/${categoryId}`);
+  const category = await categoryRes.json();
   return {
-    props: {
-      dataK,
-    },
+    props: { masters, category },
   };
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { category: '1' } },
+      { params: { category: '2' } },
+      { params: { category: '3' } },
+    ],
+    fallback: false,
+  };
+}
+
+export default Category;

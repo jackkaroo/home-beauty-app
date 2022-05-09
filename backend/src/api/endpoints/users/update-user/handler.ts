@@ -1,24 +1,18 @@
-import {Response} from 'express';
+import {Response, Request} from 'express';
 import {prisma} from '../../../../dal/client';
 import {logger} from '../../../../logger/logger';
-import {AuthenticatedRequest} from '../../../../types';
-import {UserDto} from '../../../dto/user-dto';
 import {wrapHandler} from '../../../utils/handler-wrapper';
-import unwrapUserData from '../../../utils/unwrap-user';
-import {userSelect} from '../inputs/select-input';
-import {schema} from './schema';
 
-export async function handler(req: AuthenticatedRequest, res: Response): Promise<void> {
-  const userId = unwrapUserData(req).id;
+export async function handler(req: Request, res: Response): Promise<void> {
+  const {id} = req.params;
 
-  const updateResult: UserDto = await prisma.user.update({
-    where: {id: userId},
-    data: req.body,
-    select: userSelect,
+  const updateResult = await prisma.user.update({
+    where: {id: parseInt(id)},
+    data: req.body
   });
 
-  logger.info('Updated user: ', {message: userId});
+  logger.info('Updated user: ', {message: id});
   res.send(updateResult);
 }
 
-export const updateUserHandler = wrapHandler(handler, schema);
+export const updateUserHandler = wrapHandler(handler);

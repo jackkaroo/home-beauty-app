@@ -27,9 +27,10 @@ const Register: FC = () => {
     phone: '',
     email: '',
     password: '',
-    role: '',
+    role: 'client',
     categoryId: 1,
   });
+  console.log(values);
   const [error, setError] = useState('');
 
   const handleSubmit = async (

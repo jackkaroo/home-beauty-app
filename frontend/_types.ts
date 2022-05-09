@@ -2,8 +2,8 @@ import { DayPeriod } from 'data/slots';
 
 export interface Master {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
+  surname: string;
   image: any;
   address: string;
   rate: string;
@@ -31,7 +31,7 @@ export interface Category {
 }
 
 export interface Service {
-  service: string;
+  name: string;
   price: string;
   duration: string;
 }
