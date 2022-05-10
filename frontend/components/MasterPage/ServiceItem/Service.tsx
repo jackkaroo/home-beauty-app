@@ -14,8 +14,6 @@ const ServiceItem: React.FC<Props> = ({ masterId, service }: Props) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  console.log(service);
-
   const handleOpen = (): void => {
     if (getLocalToken()) {
       setOpen(true);

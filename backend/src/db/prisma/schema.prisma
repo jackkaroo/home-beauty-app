@@ -23,6 +23,7 @@ model User {
   reviews String?
   price String?
   nickname String?
+  slotDuration Int?
 
   avatarId Int?
   avatar   Image? @relation(fields: [avatarId], references: [id], onDelete: SetNull)
@@ -32,6 +33,9 @@ model User {
 
   services MasterService[]
   workingDays MasterWorkingDay[]
+
+  masterSlots ServiceSlot[] @relation("master")
+  clientSlots ServiceSlot[] @relation("client")
 }
 
 enum UserRole {
@@ -64,6 +68,8 @@ model MasterService {
 
   masterId Int
   master User? @relation(fields: [masterId], references: [id])
+
+  masterSlots ServiceSlot[]
 }
 
 model MasterWorkingDay {
@@ -87,3 +93,19 @@ enum DayOfWeek {
   Sunday
 }
 
+model ServiceSlot {
+  id Int @id @default(autoincrement())
+
+  date DateTime
+  slotStartTime String
+  slotEndTime String
+
+  serviceId Int?
+  service MasterService? @relation(fields: [serviceId], references: [id])
+
+  masterId Int
+  master User? @relation("master", fields: [masterId], references: [id])
+
+  clientId Int?
+  client User? @relation("client", fields: [clientId], references: [id])
+}
