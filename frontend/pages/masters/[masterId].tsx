@@ -8,52 +8,21 @@ import styles from 'styles/pages/master.module.scss';
 import MasterWorks from 'components/MasterPage/MasterWorks/MasterWorks';
 import MasterServices from 'components/MasterPage/MasterServices/MasterServices';
 import InfoBlock from 'components/MasterPage/InfoBlock/InfoBlock';
+import { API_URL } from 'services/api/base';
+import { GetStaticProps } from 'next';
+import { Master } from '_types';
 
-import ImageMaster from 'assets/masters/1.jpeg';
+interface Props {
+  master: Master;
+}
 
-const master = {
-  id: 2,
-  name: 'Maria',
-  surname: 'Avramenko',
-  image: ImageMaster,
-  address: 'Kreschatyk street, Kyiv',
-  rate: '5.0',
-  reviews: 171,
-  price: '$$',
-  category: 'nails',
-  nickname: 'maria007',
-  phone: '+123456789',
-  services: [
-    {
-      name: 'manicure',
-      duration: '1,5 hour',
-      price: '120',
-    },
-    {
-      name: 'manicure',
-      duration: '1,5 hour',
-      price: '120',
-    },
-    {
-      name: 'manicure',
-      duration: '1,5 hour',
-      price: '120',
-    },
-  ],
-  background: 'rgba(124, 185, 192, 0.4)',
-};
-
-// get master from static props
-const Master: FC = () => {
+const Master: FC<Props> = ({ master }) => {
   return (
     <div>
       <Header />
       <div className={styles.container}>
         <div className={styles.title_row}>
-          <div
-            className={styles.background}
-            style={{ background: master.background }}
-          />
+          <div className={styles.background} />
           <div className={styles.flex}>
             <div className={styles.master_avatar} />
             <div>
@@ -61,13 +30,13 @@ const Master: FC = () => {
                 {master.name} {master.surname}
               </span>
               <div className={styles.desc}>
-                <span>@maria007</span>
-                <span>manicure, haircut, spa</span>
+                <span>{master?.nickname}</span>
+                <span>{master?.category?.name}</span>
               </div>
             </div>
           </div>
           <div className={styles.flex}>
-            <RateSquare rate={master.rate} reviews={master.reviews} />
+            <RateSquare rate={master?.rate} reviews={master?.reviews} />
             <GrayButton text="Call" />
             <GrayButton text="Write a message" />
           </div>
@@ -85,16 +54,24 @@ const Master: FC = () => {
   );
 };
 
-export default Master;
-
-const getStaticProps = async () => {
-  // get master by id
-  const res = await fetch('https://.../posts');
-  const data = await res.json();
-
+export const getStaticProps: GetStaticProps = async (context) => {
+  const masterId = context?.params?.masterId;
+  const masterJson = await fetch(`${API_URL}/users/${masterId}`);
+  const master = await masterJson.json();
   return {
-    props: {
-      data,
-    },
+    props: { master },
   };
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { masterId: '1' } },
+      { params: { masterId: '2' } },
+      { params: { masterId: '3' } },
+    ],
+    fallback: false,
+  };
+}
+
+export default Master;

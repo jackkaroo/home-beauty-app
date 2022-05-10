@@ -14,7 +14,11 @@ export async function handler(req: Request, res: Response): Promise<void> {
     where: {
       id: parseInt(id),
     },
-    select: userSelect,
+    include: {
+      category: true,
+      services: true,
+      workingDays: true,
+    },
   });
 
   if (!user) {

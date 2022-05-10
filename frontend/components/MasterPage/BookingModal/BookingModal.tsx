@@ -165,7 +165,7 @@ const BookingModal: React.FC<Props> = ({
             </div>
             <div className={styles.service_info}>
               <div>
-                <div>{selectedService.service}</div>
+                <div>{selectedService.name}</div>
                 {selectedSlot && (
                   <div className={styles.time}>
                     {`${selectedSlot.slotStart} - ${selectedSlot.slotEnd}`}

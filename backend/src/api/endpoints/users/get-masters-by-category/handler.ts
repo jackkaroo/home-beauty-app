@@ -14,7 +14,8 @@ export async function handler(req: Request, res: Response): Promise<void> {
     },
     include: {
       category: true,
-      services: true
+      services: true,
+      workingDays: true,
     },
   });
 

@@ -7,6 +7,14 @@ interface Props {
   master: Master;
 }
 
+interface WorkingDay {
+  id: number;
+  dayOfWeek: string;
+  startWorkingTime: string;
+  endWorkingTime: string;
+  masterId: number;
+}
+
 const InfoBlock: React.FC<Props> = ({ master }: Props) => {
   const workingHours = [
     {
@@ -55,10 +63,12 @@ const InfoBlock: React.FC<Props> = ({ master }: Props) => {
       <hr className={styles.hr} />
       <div>
         <div className={styles.subtitle}>Working hours</div>
-        {workingHours.map((day) => (
-          <div className={styles.working} key={day.day}>
-            <div>{day.day}</div>
-            <div>{day.time}</div>
+        {master.workingDays?.map((day: WorkingDay) => (
+          <div className={styles.working} key={day.id}>
+            <div>{day.dayOfWeek}</div>
+            <div>
+              {day.startWorkingTime}-{day.endWorkingTime}
+            </div>
           </div>
         ))}
       </div>

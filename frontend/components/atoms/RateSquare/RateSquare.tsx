@@ -3,8 +3,8 @@ import React from 'react';
 import styles from 'components/atoms/RateSquare/rate.module.scss';
 
 interface Props {
-  rate: string;
-  reviews: number;
+  rate?: string;
+  reviews?: number;
 }
 
 const RateSquare: React.FC<Props> = ({ rate, reviews }: Props) => {

@@ -1,7 +1,5 @@
 import React from 'react';
 import Slider from 'react-slick';
-
-import data from 'data/popular_offers';
 import Offer from 'components/PopularOffers/Offer/Offer';
 import styles from 'components/PopularOffers/offers.module.scss';
 import { Master } from '_types';

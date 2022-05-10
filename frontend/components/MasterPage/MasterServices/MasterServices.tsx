@@ -11,10 +11,10 @@ const MasterServices: React.FC<Props> = ({ master }: Props) => {
   return (
     <div>
       <div className={styles.title}>Services</div>
-      {master.services.map((service: Service) => (
+      {master?.services?.map((service: Service) => (
         <ServiceItem
           service={service}
-          key={service.service}
+          key={service.name}
           masterId={master.id}
         />
       ))}

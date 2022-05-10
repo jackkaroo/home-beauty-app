@@ -31,6 +31,7 @@ model User {
   category Category? @relation(fields: [categoryId], references: [id])
 
   services MasterService[]
+  workingDays MasterWorkingDay[]
 }
 
 enum UserRole {
@@ -64,3 +65,25 @@ model MasterService {
   masterId Int
   master User? @relation(fields: [masterId], references: [id])
 }
+
+model MasterWorkingDay {
+  id Int @id @default(autoincrement())
+
+  dayOfWeek DayOfWeek
+  startWorkingTime String
+  endWorkingTime String
+
+  masterId Int
+  master User? @relation(fields: [masterId], references: [id])
+}
+
+enum DayOfWeek {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
+}
+

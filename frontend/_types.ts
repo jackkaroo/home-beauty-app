@@ -5,12 +5,17 @@ export interface Master {
   name: string;
   surname: string;
   image: any;
-  address: string;
-  rate: string;
-  reviews: number;
-  price: string;
-  category: string;
-  services: any;
+  address?: string;
+  rate?: string;
+  reviews?: number;
+  price?: number;
+  category?: {
+    id: number;
+    name: string;
+    description: string;
+  };
+  services?: any;
+  workingDays?: any;
   phone?: string;
   nickname?: string;
 }

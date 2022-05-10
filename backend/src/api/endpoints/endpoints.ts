@@ -3,6 +3,7 @@ import {initAuthEndpoints} from './auth/auth-endpoints';
 import {initUserEndpoints} from './users/user-endpoints';
 import {initCategoriesEndpoints} from './categories/category-endpoints';
 import {initMasterServicesEndpoints} from './master-services/services-endpoints';
+import {initMasterWorkingDaysEndpoints} from './master-working-days/days-endpoints';
 
 
 export function initEndpoints(app: Application): void {
@@ -10,4 +11,5 @@ export function initEndpoints(app: Application): void {
   initUserEndpoints(app);
   initCategoriesEndpoints(app);
   initMasterServicesEndpoints(app);
+  initMasterWorkingDaysEndpoints(app);
 }

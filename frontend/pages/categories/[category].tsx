@@ -1,8 +1,5 @@
 import React, { FC } from 'react';
-import { useRouter } from 'next/router';
-
 import PopularOffers from 'components/PopularOffers/PopularOffers';
-import data from 'data/popular_offers';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import styles from 'styles/pages/category.module.scss';
@@ -11,27 +8,20 @@ import { GetStaticProps } from 'next';
 import { API_URL } from 'services/api/base';
 import { Master } from '_types';
 
-const capitalizeFirstLetter = (
-  string: string | undefined | string[]
-): string => {
-  if (typeof string !== 'string') {
-    return '';
-  }
-  return string?.charAt(0).toUpperCase() + string?.slice(1);
-};
-
 interface Props {
   masters: Master[];
+  popularMasters: Master[];
   category: any;
 }
 
-const Category: FC<Props> = ({ masters, category }) => {
+const Category: FC<Props> = ({ masters, category, popularMasters }) => {
   return (
     <div>
       <Header />
       <div className={styles.offers_wrapper}>
         <PopularOffers
-          title={`${capitalizeFirstLetter(category.name)} - Popular offers`}
+          popularMasters={popularMasters}
+          title={`${category.name} - Popular offers`}
         />
       </div>
       <div className={styles.divider} />
@@ -60,8 +50,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const categoryRes = await fetch(`${API_URL}/categories/${categoryId}`);
   const category = await categoryRes.json();
+
+  const popularMastersJson = await fetch(`${API_URL}/users/popular`);
+  const popularMasters = await popularMastersJson.json();
   return {
-    props: { masters, category },
+    props: { masters, category, popularMasters },
   };
 };
 
