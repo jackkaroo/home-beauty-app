@@ -29,6 +29,7 @@ const ServiceItem: React.FC<Props> = ({ masterId, service }: Props) => {
         open={open}
         selectedService={service}
         handleClose={handleClose}
+        masterId={masterId}
       />
       <div className={styles.service_wrapper}>
         <div className={styles.service}>{service.name}</div>

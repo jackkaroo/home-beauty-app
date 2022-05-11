@@ -26,9 +26,9 @@ const Master: FC<Props> = ({ master }) => {
           <div className={styles.flex}>
             <div className={styles.master_avatar} />
             <div>
-              <span className={styles.title}>
+              <div className={styles.title}>
                 {master.name} {master.surname}
-              </span>
+              </div>
               <div className={styles.desc}>
                 <span>{master?.nickname}</span>
                 <span>{master?.category?.name}</span>

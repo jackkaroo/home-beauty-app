@@ -44,7 +44,7 @@ export interface Service {
 export interface ISlot {
   id: number;
   date?: string;
-  slotStart: string;
-  slotEnd: string;
-  period: DayPeriod;
+  slotStartTime: string;
+  slotEndTime: string;
+  clientId?: number;
 }

@@ -37,7 +37,7 @@ const SuccessModal: FC<Props> = ({
           Success
         </div>
         <div className={styles.sub_success}>
-          {`you were booked for a ${selectedService.service} on Thursday at ${selectedSlot?.slotStart}`}
+          {`you were booked for a ${selectedService.name} on Thursday at ${selectedSlot?.slotStartTime}`}
         </div>
       </Box>
     </Modal>

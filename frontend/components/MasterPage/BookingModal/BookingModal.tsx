@@ -8,6 +8,8 @@ import styles from './BookingModal.module.scss';
 import { ISlot } from '_types';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import SuccessModal from 'components/MasterPage/BookingModal/SuccessModal/SuccessModal';
+import { API_URL } from 'services/api/base';
+import { getUserId } from 'services/api/users/localStorage';
 
 const styleModal = {
   position: 'absolute' as const,
@@ -24,17 +26,22 @@ interface Props {
   open: boolean;
   handleClose: () => void;
   selectedService: any;
+  masterId: number;
 }
 
-const getSlotsArray = (slots: ISlot[]) => {
+const getSlotsArray = (slots: ISlot[] | null) => {
+  if (!slots) return [];
   const morningSlots = slots.filter(
-    (slot) => slot.period === DayPeriod.Morning
+    (slot) => slot.slotStartTime < '13:00' && !slot.clientId
   );
   const afternoonSlots = slots.filter(
-    (slot) => slot.period === DayPeriod.Afternoon
+    (slot) =>
+      slot.slotStartTime >= '13:00' &&
+      slot.slotStartTime < '18:00' &&
+      !slot.clientId
   );
   const eveningSlots = slots.filter(
-    (slot) => slot.period === DayPeriod.Evening
+    (slot) => slot.slotStartTime >= '18:00' && !slot.clientId
   );
 
   return [
@@ -48,22 +55,42 @@ const BookingModal: React.FC<Props> = ({
   open,
   handleClose,
   selectedService,
+  masterId,
 }: Props) => {
   const [selectedDate, setSelectedDate] =
     useState<MaterialUiPickersDate | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<ISlot | null>(null);
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
-  const [freeSlots, setFreeSlots] = useState(slots);
+  const [freeSlots, setFreeSlots] = useState<ISlot[] | null>(null);
 
   const slotsArrays = getSlotsArray(freeSlots);
   const isSlotSelected = (slotId: number): boolean => {
     return slotId === selectedSlot?.id;
   };
 
-  const handleConfirmBooking = (): void => {
-    // api call
-    // validate and call props function
-    setBookingConfirmed(true);
+  const handleConfirmBooking = async (): Promise<void> => {
+    if (selectedSlot) {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          clientId: parseInt(getUserId() as string),
+          serviceId: selectedService.id,
+        }),
+      };
+
+      try {
+        const resJson = await fetch(
+          `${API_URL}/service-slots/${selectedSlot.id}`,
+          requestOptions
+        );
+        const res = await resJson.json();
+        if (res.error) throw Error(res.error.message);
+        setBookingConfirmed(true);
+      } catch (err) {
+        alert(err);
+      }
+    }
   };
 
   const handleModalClose = (): void => {
@@ -73,11 +100,20 @@ const BookingModal: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    // fetch free sloots here by master id
-    // setFreeSlots(sloots)
-
     const event = new Date(selectedDate!);
-    console.log(event.toISOString());
+    event.setMinutes(0);
+    event.setHours(3);
+
+    const fetchData = async () => {
+      const slotsJson = await fetch(
+        `${API_URL}/service-slots/${masterId}/${event.toISOString()}`
+      );
+      const slots = await slotsJson.json();
+      setFreeSlots(slots);
+    };
+
+    // call the function
+    fetchData();
   }, [selectedDate]);
 
   return (
@@ -115,7 +151,7 @@ const BookingModal: React.FC<Props> = ({
                       }
                       onClick={(): void => setSelectedSlot(el)}
                     >
-                      {el.slotStart}
+                      {el.slotStartTime}
                     </div>
                   ))}
                 </div>
@@ -126,7 +162,7 @@ const BookingModal: React.FC<Props> = ({
                 <div>{selectedService.name}</div>
                 {selectedSlot && (
                   <div className={styles.time}>
-                    {`${selectedSlot.slotStart} - ${selectedSlot.slotEnd}`}
+                    {`${selectedSlot.slotStartTime} - ${selectedSlot.slotEndTime}`}
                   </div>
                 )}
               </div>
