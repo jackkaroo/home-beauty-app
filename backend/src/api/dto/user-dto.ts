@@ -6,5 +6,4 @@ export type UserDto = {
   name: string;
   email: string;
   role: UserRole;
-  avatarId: number | null;
 };

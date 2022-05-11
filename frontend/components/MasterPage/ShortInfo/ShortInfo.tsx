@@ -11,14 +11,17 @@ interface Props {
 }
 
 const ShortInfo: React.FC<Props> = ({ master }: Props) => {
-  console.log(master);
   const slicedServices = master.services?.slice(0, 3);
+  console.log(master);
 
   return (
     <div className={styles.master_wrapper}>
       <a className={styles.master_image} href={`/masters/${master.id}`}>
-        {' '}
-        {/*<Image src={master.image} />*/}
+        {master.avatar ? (
+          <Image src={master.avatar} width={400} height={200} />
+        ) : (
+          <></>
+        )}
       </a>
       <div className={styles.master_info}>
         <a className={styles.title_row} href={`/masters/${master.id}`}>

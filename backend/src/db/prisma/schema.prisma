@@ -24,9 +24,7 @@ model User {
   price String?
   nickname String?
   slotDuration Int?
-
-  avatarId Int?
-  avatar   Image? @relation(fields: [avatarId], references: [id], onDelete: SetNull)
+  avatar String?
 
   categoryId Int?
   category Category? @relation(fields: [categoryId], references: [id])
@@ -47,7 +45,6 @@ model Image {
   id Int @id @default(autoincrement())
 
   path String
-  User User[]
 }
 
 model Category {

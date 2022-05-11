@@ -4,7 +4,6 @@ export const userSelect = {
   surname: true,
   phone: true,
   email: true,
-  avatarId: true,
   categoryId: true,
   role: true,
 };

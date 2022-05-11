@@ -6,7 +6,6 @@ const bodySchema: Schema = {
   properties: {
     name: {type: 'string', isNotEmpty: true},
     email: {type: 'string', format: 'email'},
-    avatarId: {type: ['number', 'null'], minimum: 1},
   },
   minProperties: 1,
   additionalProperties: false,

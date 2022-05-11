@@ -4,7 +4,7 @@ export interface Master {
   id: number;
   name: string;
   surname: string;
-  image: any;
+  avatar: any;
   address?: string;
   rate?: string;
   reviews?: number;
