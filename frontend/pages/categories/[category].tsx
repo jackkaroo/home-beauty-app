@@ -4,7 +4,7 @@ import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import styles from 'styles/pages/category.module.scss';
 import ShortInfo from 'components/MasterPage/ShortInfo/ShortInfo';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { API_URL } from 'services/api/base';
 import { Master } from '_types';
 
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [
       { params: { category: '1' } },
@@ -67,6 +67,6 @@ export async function getStaticPaths() {
     ],
     fallback: false,
   };
-}
+};
 
 export default Category;

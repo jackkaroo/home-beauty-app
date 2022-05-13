@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Modal } from '@material-ui/core';
 import CalendarPicker from 'components/MasterPage/BookingModal/CalendarPicker';
-import slots, { DayPeriod } from 'data/slots';
 import CrossLine from 'assets/icons/crossline.svg';
-import Check from 'assets/icons/check.svg';
 import styles from './BookingModal.module.scss';
 import { ISlot } from '_types';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
@@ -29,7 +27,9 @@ interface Props {
   masterId: number;
 }
 
-const getSlotsArray = (slots: ISlot[] | null) => {
+const getSlotsArray = (
+  slots: ISlot[] | null
+): { time: string; arr: ISlot[] }[] => {
   if (!slots) return [];
   const morningSlots = slots.filter(
     (slot) => slot.slotStartTime < '13:00' && !slot.clientId
@@ -104,7 +104,7 @@ const BookingModal: React.FC<Props> = ({
     event.setMinutes(0);
     event.setHours(3);
 
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       const slotsJson = await fetch(
         `${API_URL}/service-slots/${masterId}/${event.toISOString()}`
       );

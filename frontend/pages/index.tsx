@@ -10,6 +10,7 @@ import Footer from 'components/Footer/Footer';
 import styles from 'styles/pages/Home.module.css';
 import { API_URL } from 'services/api/base';
 import { Category, Master } from '_types';
+import { GetServerSideProps } from 'next';
 
 interface Props {
   categories: Category[];
@@ -45,7 +46,7 @@ const Home: FC<Props> = ({ categories, popularMasters }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const categoriesJson = await fetch(`${API_URL}/categories`);
   const categories = await categoriesJson.json();
 

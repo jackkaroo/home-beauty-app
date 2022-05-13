@@ -9,7 +9,7 @@ import MasterWorks from 'components/MasterPage/MasterWorks/MasterWorks';
 import MasterServices from 'components/MasterPage/MasterServices/MasterServices';
 import InfoBlock from 'components/MasterPage/InfoBlock/InfoBlock';
 import { API_URL } from 'services/api/base';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { Master } from '_types';
 
 interface Props {
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [
       { params: { masterId: '1' } },
@@ -72,6 +72,6 @@ export async function getStaticPaths() {
     ],
     fallback: false,
   };
-}
+};
 
 export default Master;
