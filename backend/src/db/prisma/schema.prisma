@@ -1,0 +1,108 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email String   @unique
+  phone String?
+  name  String
+  surname  String?
+  hash  String
+  role  UserRole
+
+  address String?
+  rate Float?
+  reviews String?
+  price String?
+  nickname String?
+  slotDuration Int?
+  avatar String?
+
+  categoryId Int?
+  category Category? @relation(fields: [categoryId], references: [id])
+
+  services MasterService[]
+  workingDays MasterWorkingDay[]
+
+  masterSlots ServiceSlot[] @relation("master")
+  clientSlots ServiceSlot[] @relation("client")
+}
+
+enum UserRole {
+  client
+  master
+}
+
+model Image {
+  id Int @id @default(autoincrement())
+
+  path String
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+  description String?
+
+  masters User[]
+}
+
+model MasterService {
+  id Int @id @default(autoincrement())
+
+  name String
+  duration String
+  price Int
+
+  masterId Int
+  master User? @relation(fields: [masterId], references: [id])
+
+  masterSlots ServiceSlot[]
+}
+
+model MasterWorkingDay {
+  id Int @id @default(autoincrement())
+
+  dayOfWeek DayOfWeek
+  startWorkingTime String
+  endWorkingTime String
+
+  masterId Int
+  master User? @relation(fields: [masterId], references: [id])
+}
+
+enum DayOfWeek {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
+}
+
+model ServiceSlot {
+  id Int @id @default(autoincrement())
+
+  date DateTime
+  slotStartTime String
+  slotEndTime String
+
+  serviceId Int?
+  service MasterService? @relation(fields: [serviceId], references: [id])
+
+  masterId Int
+  master User? @relation("master", fields: [masterId], references: [id])
+
+  clientId Int?
+  client User? @relation("client", fields: [clientId], references: [id])
+}

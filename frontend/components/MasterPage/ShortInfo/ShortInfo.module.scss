@@ -1,0 +1,101 @@
+.master_wrapper {
+  margin-bottom: 65px;
+  display: flex;
+}
+
+.master_image {
+  border-radius: 5px;
+  width: 340px;
+  height: 220px;
+  margin-right: 40px;
+  flex-shrink: 0;
+  background: gray;
+}
+
+.master_info {
+  min-width: 700px;
+}
+
+.master_services {
+  position: relative;
+}
+
+.title_row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+  align-items: center;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.address {
+  font-size: 18px;
+  color: #818181;
+  margin-bottom: 16px;
+}
+
+.service_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(129, 129, 129, 0.2);
+}
+
+.service {
+  font-weight: 300;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.booking {
+  display: flex;
+}
+
+.book {
+  background: #C4C4C4;
+  border-radius: 5px;
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  margin-left: 40px;
+
+  &:hover {
+    background: rgba(196, 196, 196, 0.08);
+    border: 1px solid #C4C4C4;
+  }
+}
+
+.price {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.duration {
+  font-weight: 300;
+  font-size: 12px;
+  color: #6A6161;
+  text-transform: uppercase;
+}
+
+.see_more {
+  position: absolute;
+  bottom: -20px;
+  right: 108px;
+  font-weight: 300;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
